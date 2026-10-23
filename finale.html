@@ -1,0 +1,3399 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notre histoire ❤️</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            animation: apparitionMagique 2.4s ease-out both;
+            margin: 0;
+            min-height: 100vh;
+            background: #fffafb;
+            color: #60474B;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Les petites étoiles magiques */
+       
+        
+
+.etoile {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0 0 8px #FFFFFF, 0 0 14px #D98FA0;
+    pointer-events: none;
+    animation: scintillement ease-in-out infinite alternate;
+}
+
+@keyframes scintillement {
+    0% {
+        opacity: 0.35;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.8);
+    }
+}
+
+
+        @keyframes scintillement {
+            from {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.6);
+            }
+        }
+
+        /* Le contenu principal */
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .petit-coeur {
+            font-size: 25px;
+            color: #C58B98;
+            margin-bottom: 12px;
+            animation: battre 2s ease-in-out infinite;
+        }
+
+        @keyframes battre {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        h1 {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(54px, 9vw, 88px);
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #80535D;
+        }
+
+        .sous-titre {
+            max-width: 420px;
+            margin: 15px 0 40px;
+            font-size: 13px;
+            line-height: 2;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Les boutons de surprises */
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 220px));
+            gap: 16px;
+            width: 100%;
+            max-width: 456px;
+        }
+
+        .bouton {
+            min-height: 100px;
+            padding: 18px 12px;
+            border: 1px solid #D8B3B8;
+            border-radius: 18px;
+            background: #FAF3F0;
+            color: #80535D;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .bouton:hover {
+            transform: translateY(-4px);
+            background: #FFFFFF;
+            box-shadow: 0 8px 28px #C58B9829;
+        }
+
+        .icone {
+            display: block;
+            font-size: 23px;
+            margin-bottom: 9px;
+        }
+
+        .nom-bouton {
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .petite-signature {
+            margin-top: 42px;
+            color: #9A777D;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        /* La zone qui affichera les surprises */
+        #surprise {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 28px;
+            padding: 25px;
+            border: 1px solid #D8B3B8;
+            border-radius: 18px;
+            background: #FAF3F0E8;
+            animation: apparition 0.6s ease both;
+        }
+
+        #surprise.visible {
+            display: block;
+        }
+
+        #titreSurprise {
+            margin: 0 0 12px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+        }
+
+        #texteSurprise {
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .fermer {
+            margin-top: 15px;
+            padding: 9px 18px;
+            border: 1px solid #D8B3B8;
+            border-radius: 30px;
+            background: transparent;
+            color: #80535D;
+            cursor: pointer;
+        }
+
+        @keyframes apparition {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .menu {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+            }
+
+            .bouton {
+                min-height: 82px;
+            }
+        }
+        
+/* La lumière s'estompe pour révéler notre univers */
+@keyframes apparitionMagique {
+    0% {
+        opacity: 0;
+        filter: brightness(4) blur(8px);
+        transform: scale(1.025);
+    }
+
+    35% {
+        opacity: 0.5;
+        filter: brightness(2.5) blur(4px);
+        transform: scale(1.015);
+    }
+
+    70% {
+        opacity: 0.9;
+        filter: brightness(1.3) blur(1px);
+        transform: scale(1.005);
+    }
+
+    100% {
+        opacity: 1;
+        filter: brightness(1) blur(0);
+        transform: scale(1);
+    }
+}
+
+.menu {
+    animation: apparitionMenu 1.2s ease-out 0.7s both;
+}
+
+.petite-signature {
+    animation: apparitionMenu 1.4s ease-out 1s both;
+}
+
+@keyframes apparitionMenu {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* L'album photo */
+.zone-album {
+    display: none;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 28px;
+    padding: 25px;
+    border: 1px solid #D8B3B8;
+    border-radius: 20px;
+    background: #FAF3F0E8;
+    animation: apparition 0.6s ease both;
+}
+
+.zone-album.visible {
+    display: block;
+}
+
+.zone-album h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 34px;
+    margin: 0 0 8px;
+}
+
+.zone-album > p {
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+
+.galerie {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin: 24px 0;
+    padding: 10px 4px 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.galerie img {
+    flex: 0 0 220px;
+    width: 220px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 4px solid #FFFFFF;
+    box-shadow: 0 3px 12px #80535D20;
+    cursor: pointer;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease;
+}
+
+
+.galerie img:hover {
+    transform: translateY(-4px) rotate(-1deg);
+}
+
+/* Affichage d'une photo en grand */
+#visionneuse {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background: #302725E8;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 24px;
+    cursor: pointer;
+}
+
+#visionneuse.visible {
+    display: flex;
+}
+
+#photoAgrandie {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border: 5px solid white;
+    border-radius: 8px;
+    animation: apparition 0.3s ease both;
+}
+
+#visionneuse p {
+    color: white;
+    font-size: 12px;
+    margin-top: 16px;
+}
+
+/* Conteneur de l'album et de ses flèches */
+.album-defilant {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* Les deux flèches */
+.fleche-album {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #D8B3B8;
+    border-radius: 50%;
+    background: #FAF3F0E8;
+    color: #80535D;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 3px 12px #80535D25;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.fleche-album:hover {
+    background: #EAD1D5;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.fleche-album.gauche {
+    left: -12px;
+}
+
+.fleche-album.droite {
+    right: -12px;
+}
+
+@media (max-width: 500px) {
+    .fleche-album.gauche {
+        left: 2px;
+    }
+
+    .fleche-album.droite {
+        right: 2px;
+    }
+}
+
+/* Lumières romantiques qui flottent */
+.lumiere-flottante {
+    position: fixed;
+    bottom: -40px;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #FFFFFFD9 0%,
+        #E9B8C8A8 35%,
+        #E9B8C800 75%
+    );
+    filter: blur(2px);
+    animation: lumiereMonte var(--duree) linear infinite;
+    animation-delay: var(--delai);
+}
+
+@keyframes lumiereMonte {
+    0% {
+        transform: translateY(0) scale(0.7);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.8;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-115vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Petits cœurs qui remontent */
+.coeur-flottant {
+    position: fixed;
+    bottom: -35px;
+    z-index: 0;
+    pointer-events: none;
+    color: #C8879B;
+    opacity: 0;
+    font-size: var(--taille);
+    animation: coeurMonte var(--duree) ease-in infinite;
+    animation-delay: var(--delai);
+}
+
+@keyframes coeurMonte {
+    0% {
+        transform: translateY(0) rotate(-15deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.5;
+    }
+    85% {
+        opacity: 0.35;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+/* Le contenu reste au-dessus des décorations */
+.page {
+    position: relative;
+    z-index: 1;
+}
+
+/* Respecter les préférences de mouvement */
+@media (prefers-reduced-motion: reduce) {
+    .lumiere-flottante,
+    .coeur-flottant {
+        animation: none;
+        display: none;
+    }
+}
+
+/* Petit jeu romantique */
+.jeu-amour {
+    max-width: 560px;
+    margin: 24px auto;
+    padding: 22px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(214, 145, 164, 0.35);
+    box-shadow: 0 8px 24px rgba(150, 90, 110, 0.08);
+    animation: apparitionJeu 0.6s ease;
+}
+
+.jeu-intro {
+    font-size: 1.15em;
+    font-weight: bold;
+}
+
+.jeu-progression {
+    margin: 22px 0;
+    font-size: 0.9em;
+}
+
+.jeu-barre {
+    height: 7px;
+    margin-top: 9px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f0dce3;
+}
+
+#progressionJeu {
+    width: 33.333%;
+    height: 100%;
+    border-radius: 20px;
+    background: #d78ba5;
+    transition: width 0.5s ease;
+}
+
+.choix-jeu {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px 15px;
+    border: 1px solid #e7b8c8;
+    border-radius: 14px;
+    background: #fff9fb;
+    color: #75485a;
+    font: inherit;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.choix-jeu:hover {
+    background: #fbeaf0;
+    transform: translateY(-2px);
+}
+
+.choix-jeu:focus-visible,
+#boutonSuivantJeu:focus-visible {
+    outline: 2px solid #b85f80;
+    outline-offset: 3px;
+}
+
+#retourJeu {
+    min-height: 28px;
+    font-weight: bold;
+    color: #a34f70;
+}
+
+@keyframes apparitionJeu {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fond qui assombrit doucement la page */
+.fond-parchemin {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(45, 28, 35, 0.42);
+    backdrop-filter: blur(3px);
+}
+
+.fond-parchemin.visible {
+    display: flex;
+    animation: apparitionFondParchemin 0.35s ease;
+}
+
+/* La petite lettre ancienne */
+.lettre-parchemin {
+    position: relative;
+    width: min(440px, 100%);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 38px 28px;
+    color: #5d4534;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 10% 15%, rgba(150, 100, 50, 0.12), transparent 35%),
+        radial-gradient(ellipse at 90% 85%, rgba(130, 75, 35, 0.12), transparent 38%),
+        linear-gradient(135deg, #f8edcf, #ead8ae 55%, #f4e5c2);
+    border: 1px solid #c6aa78;
+    border-radius: 5px 12px 6px 10px;
+    box-shadow:
+        0 18px 55px rgba(25, 12, 10, 0.3),
+        inset 0 0 24px rgba(130, 85, 40, 0.12);
+    animation: ouvertureParchemin 0.55s ease both;
+}
+
+/* Petit effet de papier ancien */
+.lettre-parchemin::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(139, 100, 55, 0.32);
+    pointer-events: none;
+}
+
+.lettre-parchemin h2 {
+    position: relative;
+    margin: 8px 0 22px;
+    color: #79513b;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+.deco-parchemin {
+    color: #a47c4e;
+    font-size: 1.4rem;
+    letter-spacing: 5px;
+}
+
+.texte-parchemin {
+    position: relative;
+    white-space: pre-line;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.08rem;
+    line-height: 1.9;
+}
+
+.signature-parchemin {
+    position: relative;
+    margin-top: 28px;
+    color: #95664e;
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+}
+
+.fermer-parchemin {
+    position: absolute;
+    z-index: 2;
+    top: 12px;
+    right: 15px;
+    border: none;
+    background: transparent;
+    color: #79513b;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+@keyframes apparitionFondParchemin {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes ouvertureParchemin {
+    from {
+        opacity: 0;
+        transform: scale(0.82) translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Boutons du jeu : style romantique */
+#boutonSuivantJeu {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 25px;
+    border: 1px solid rgba(190, 112, 143, 0.35);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #e8b4c7, #d58da9);
+    color: #fffafc;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    box-shadow: 0 5px 14px rgba(173, 99, 129, 0.2);
+    cursor: pointer;
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                filter 0.25s ease;
+}
+
+#boutonSuivantJeu:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(173, 99, 129, 0.28);
+    filter: brightness(1.04);
+}
+
+#boutonSuivantJeu:active {
+    transform: scale(0.97);
+}
+.question-personnelle {
+    margin: 16px 0;
+    text-align: left;
+}
+
+.question-personnelle label {
+    display: block;
+    font-weight: 600;
+}
+
+.reponse-personnelle {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    border: 1px solid #e5c4d1;
+    border-radius: 14px;
+    background: #fffafd;
+    color: #49333d;
+    font: inherit;
+    resize: vertical;
+}
+
+/* ===== FENÊTRE DES SOUVENIRS SECRETS ===== */
+
+.zone-souvenirs[hidden],
+.voile-souvenir[hidden] {
+    display: none !important;
+}
+
+.zone-souvenirs {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    color: #79545d;
+}
+
+.fond-souvenirs {
+    position: absolute;
+    inset: 0;
+    background: rgba(53, 34, 40, 0.48);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.fenetre-souvenirs {
+    position: relative;
+    z-index: 1;
+    width: min(540px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 34px 28px 24px;
+    text-align: center;
+    border: 1px solid #e8c3c9;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #fffaf9, #f9eeec);
+    box-shadow: 0 22px 75px rgba(53, 34, 40, 0.25);
+    animation: apparitionSouvenirs .35s ease-out;
+}
+
+@keyframes apparitionSouvenirs {
+    from { opacity: 0; transform: translateY(12px) scale(.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.croix-souvenirs {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    border: none;
+    background: transparent;
+    color: #986773;
+    font: 30px/1 Georgia, serif;
+    cursor: pointer;
+    padding: 5px 9px;
+}
+
+.entete-souvenirs {
+    color: #b17b86;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.fenetre-souvenirs h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(32px, 7vw, 43px);
+    font-weight: 500;
+    color: #895864;
+    margin: 0 0 8px;
+}
+
+.description-souvenirs {
+    max-width: 390px;
+    margin: 0 auto 24px;
+    font-size: 12px;
+    line-height: 1.9;
+    color: #987b80;
+}
+
+.grille-souvenirs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.case-souvenir {
+    min-width: 0;
+    min-height: 112px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid #e8c2c8;
+    border-radius: 17px;
+    background: rgba(255, 255, 255, .65);
+    color: #986773;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: .4px;
+    cursor: pointer;
+    transition: transform .2s, background .2s, box-shadow .2s;
+}
+
+.case-souvenir:hover {
+    transform: translateY(-4px);
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(165, 107, 121, .13);
+}
+
+.case-souvenir.ouvert {
+    background: #f4e2e4;
+    border-color: #d6a4af;
+}
+
+.cadenas {
+    font-size: 24px;
+    filter: saturate(.55);
+}
+
+.pied-souvenirs {
+    margin: 22px 0 0;
+    color: #b18b91;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 17px;
+}
+
+/* ===== CARTE QUI SE SUPERPOSE AU SECRET ===== */
+
+.voile-souvenir {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    box-sizing: border-box;
+    background: rgba(61, 39, 45, .38);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.carte-secret {
+    position: relative;
+    width: min(390px, 100%);
+    box-sizing: border-box;
+    padding: 36px 26px 27px;
+    border: 1px solid #e5bdc5;
+    border-radius: 23px;
+    background: linear-gradient(145deg, #fffdfb, #f8e9e9);
+    box-shadow: 0 18px 60px rgba(55, 30, 38, .25);
+    text-align: center;
+    animation: apparitionSouvenirs .3s ease-out;
+}
+
+.croix-carte {
+    top: 9px;
+    right: 11px;
+}
+
+.petit-coeur {
+    color: #bd8592;
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.numero-secret {
+    color: #b1848e;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.carte-secret h3 {
+    margin: 12px 0;
+    color: #895864;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 31px;
+    font-weight: 500;
+}
+
+#texteSecret {
+    color: #80666b;
+    font-size: 13px;
+    line-height: 1.9;
+    white-space: pre-line;
+}
+
+.actions-secret {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.bouton-secret {
+    min-height: 42px;
+    padding: 10px 18px;
+    border: 1px solid #dcb0b9;
+    border-radius: 30px;
+    background: transparent;
+    color: #986773;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: .4px;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.bouton-secret:hover {
+    background: #f4e1e5;
+    transform: translateY(-1px);
+}
+
+.bouton-secret.bouton-suivant {
+    background: #a9707d;
+    border-color: #a9707d;
+    color: white;
+}
+
+.bouton-secret.bouton-suivant:hover {
+    background: #8d5967;
+}
+
+/* Adaptation aux petits écrans */
+
+@media (max-width: 420px) {
+    .fenetre-souvenirs {
+        padding: 32px 16px 20px;
+    }
+
+    .grille-souvenirs {
+        gap: 8px;
+    }
+
+    .case-souvenir {
+        min-height: 95px;
+        font-size: 10px;
+    }
+
+    .cadenas {
+        font-size: 21px;
+    }
+}
+
+/* ===== MENU DES SURPRISES SECRÈTES ===== */
+.fenetre-menu-secret,
+.fenetre-experience {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    color: #80535d;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.fenetre-menu-secret[hidden],
+.fenetre-experience[hidden] {
+    display: none !important;
+}
+
+.fond-menu-secret {
+    position: absolute;
+    inset: 0;
+    background: rgba(53, 34, 40, .52);
+    backdrop-filter: blur(6px);
+}
+
+.carte-menu-secret,
+.carte-bocal {
+    position: relative;
+    z-index: 1;
+    width: min(500px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 34px 24px 25px;
+    text-align: center;
+    border: 1px solid #e5bdc5;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #fffdfb, #f8e9e9);
+    box-shadow: 0 22px 75px rgba(53, 34, 40, .25);
+    animation: apparitionSouvenirs .35s ease-out;
+}
+
+.croix-secret {
+    position: absolute;
+    top: 10px;
+    right: 13px;
+    z-index: 5;
+    border: 0;
+    background: transparent;
+    color: #986773;
+    font: 30px/1 Georgia, serif;
+    cursor: pointer;
+    padding: 5px 8px;
+}
+
+.surtitre-secret {
+    margin: 0 0 10px;
+    color: #b17b86;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+.carte-menu-secret h2,
+.carte-bocal h2 {
+    margin: 0 0 10px;
+    font: 500 clamp(30px, 7vw, 40px)/1.15 'Cormorant Garamond', Georgia, serif;
+    color: #895864;
+}
+
+.intro-menu-secret {
+    max-width: 350px;
+    margin: 0 auto 24px;
+    color: #987b80;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.choix-secrets {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.choix-secret {
+    min-width: 0;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    padding: 18px 10px;
+    border: 1px solid #e5bdc5;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .68);
+    color: #895864;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.choix-secret:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px #c58b9829;
+}
+
+.illustration-choix {
+    font-size: 39px;
+}
+
+.titre-choix {
+    font: 500 23px 'Cormorant Garamond', Georgia, serif;
+}
+
+.description-choix {
+    font-size: 10px;
+    line-height: 1.7;
+    color: #987b80;
+}
+
+.choix-etoiles {
+    color: #f7d8ff;
+    border-color: #b15ad9;
+    background: radial-gradient(ellipse at top, #30234d, #12142e 75%);
+    box-shadow: inset 0 0 25px #a548d51c;
+}
+
+.choix-etoiles .illustration-choix {
+    color: #ffe99a;
+    text-shadow: 0 0 13px #e7a6ff, 0 0 25px #9e53e6;
+}
+
+.choix-etoiles .titre-choix {
+    color: #fff0ff;
+}
+
+.choix-etoiles .description-choix {
+    color: #d2b5e5;
+}
+
+/* ===== BOCAL À PETITS MOTS ===== */
+.dessin-bocal {
+    position: relative;
+    display: block;
+    width: 150px;
+    height: 175px;
+    margin: 18px auto 12px;
+    border: 2px solid #dba6b6;
+    border-radius: 30px 30px 38px 38px;
+    background: linear-gradient(100deg, #ffffff9c, #f7dfe89c 48%, #fff8fbba);
+    box-shadow: inset 9px 0 15px #fff9, inset -7px 0 15px #d89bae33, 0 12px 25px #bd859229;
+    cursor: pointer;
+    transition: transform .35s, box-shadow .35s;
+}
+
+.dessin-bocal:hover {
+    transform: translateY(-3px) rotate(-2deg);
+    box-shadow: inset 9px 0 15px #fff9, 0 16px 30px #bd85924d;
+}
+
+.couvercle-bocal {
+    position: absolute;
+    width: 78px;
+    height: 17px;
+    top: -12px;
+    left: 34px;
+    border: 2px solid #c98b9e;
+    border-radius: 6px;
+    background: linear-gradient(#eac1cd, #dba0b4);
+    transition: transform .45s;
+}
+
+.dessin-bocal.ouvert .couvercle-bocal {
+    transform: translate(30px, -17px) rotate(24deg);
+}
+
+.coeur-bocal {
+    position: absolute;
+    top: 29px;
+    left: 0;
+    right: 0;
+    color: #c77e96;
+    font-size: 35px;
+}
+
+.petit-mot-bocal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    color: #946774;
+    font: italic 21px/1.05 'Cormorant Garamond', Georgia, serif;
+}
+
+.reflet-bocal {
+    position: absolute;
+    top: 28px;
+    left: 13px;
+    width: 10px;
+    height: 80px;
+    border-radius: 20px;
+    background: #fff9;
+    transform: rotate(3deg);
+}
+
+.instruction-bocal {
+    min-height: 20px;
+    color: #a57b86;
+    font-size: 11px;
+}
+
+.resultat-bocal {
+    margin: 18px 0;
+    padding: 16px;
+    border: 1px solid #ead0d5;
+    border-radius: 17px;
+    background: #fffafc;
+    animation: apparitionSouvenirs .3s ease;
+}
+
+.resultat-bocal p {
+    margin: 10px 0;
+    color: #895864;
+    font: 500 25px/1.35 'Cormorant Garamond', Georgia, serif;
+}
+
+.petit-ornement {
+    color: #c58b98;
+}
+
+.bouton-doux {
+    display: block;
+    width: 100%;
+    margin: 14px auto 0;
+    padding: 12px 18px;
+    border: 1px solid #dcb0b9;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #e8b4c7, #d58da9);
+    color: #fffafc;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: .3px;
+    box-shadow: 0 5px 14px #ad638129;
+    cursor: pointer;
+    transition: transform .2s, filter .2s;
+}
+
+.bouton-doux:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.04);
+}
+
+.retour-experience {
+    margin-top: 13px;
+    padding: 8px 12px;
+    border: 0;
+    background: transparent;
+    color: #a17c85;
+    font: 11px 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+
+/* ===== CIEL NOCTURNE AUX SIX ÉTOILES ===== */
+.univers-nuit {
+    color: #f8eaff;
+}
+
+.fond-nuit {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 50% 40%, #30204d 0%, #19152f 42%, #0b1025 100%);
+}
+
+.carte-ciel {
+    position: relative;
+    z-index: 1;
+    width: min(510px, 100%);
+    padding: 38px 22px 24px;
+    text-align: center;
+    border: 1px solid #b45ae1;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #201a3b, #10152d 80%);
+    box-shadow: 0 0 0 1px #e18bff22, 0 0 32px #9d48e744, 0 22px 70px #0008;
+    animation: apparitionSouvenirs .4s ease-out;
+}
+
+.croix-nuit {
+    color: #f2caff;
+}
+
+.surtitre-nuit {
+    color: #e4a7ff;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+.carte-ciel h2 {
+    margin: 0 0 8px;
+    color: #fff0ff;
+    font: 500 clamp(34px, 7vw, 43px) 'Cormorant Garamond', Georgia, serif;
+    text-shadow: 0 0 18px #d06cff55;
+}
+
+.intro-nuit {
+    color: #c9b9e5;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.ciel-etoiles {
+    position: relative;
+    height: 250px;
+    max-width: 360px;
+    margin: 12px auto;
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at 25% 30%, #9c73d41a 0 2px, transparent 3px),
+        radial-gradient(circle at 75% 70%, #9c73d41a 0 2px, transparent 3px);
+}
+
+.etoile-secret {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    border: 1px solid #e5b5ff;
+    border-radius: 50%;
+    background: radial-gradient(circle, #6550a0aa, #30264e55);
+    color: #ffe99a;
+    font-size: 30px;
+    text-shadow: 0 0 7px #ffe99a, 0 0 18px #e6a2ff, 0 0 32px #b95bff;
+    box-shadow: 0 0 13px #bc68ff55, inset 0 0 10px #d98bff33;
+    cursor: pointer;
+    animation: scintilleEtoile 2.1s ease-in-out infinite alternate;
+    transition: transform .2s, background .2s;
+}
+
+.etoile-secret:hover {
+    transform: scale(1.2);
+    background: #6d4a8e;
+}
+
+.etoile-1 { top: 15%; left: 13%; animation-delay: -.2s; }
+.etoile-2 { top: 7%; left: 62%; animation-delay: -.9s; }
+.etoile-3 { top: 37%; left: 43%; animation-delay: -.5s; }
+.etoile-4 { top: 59%; left: 12%; animation-delay: -1.3s; }
+.etoile-5 { top: 63%; left: 70%; animation-delay: -.7s; }
+.etoile-6 { top: 79%; left: 43%; animation-delay: -1.7s; }
+
+@keyframes scintilleEtoile {
+    from { opacity: .65; filter: brightness(.9); }
+    to { opacity: 1; filter: brightness(1.5); }
+}
+
+.legende-nuit {
+    color: #cbb1e8;
+    font: italic 17px 'Cormorant Garamond', Georgia, serif;
+}
+
+.retour-nuit {
+    color: #d8b6f4;
+}
+
+/* Parchemin délicat sur le ciel */
+.voile-etoile {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #09091bd1;
+    backdrop-filter: blur(5px);
+}
+
+.voile-etoile[hidden] {
+    display: none !important;
+}
+
+.parchemin-etoile {
+    position: relative;
+    width: min(370px, 100%);
+    padding: 38px 25px 26px;
+    border: 1px solid #d0b58a;
+    border-radius: 4px 9px 5px 7px;
+    background:
+        radial-gradient(ellipse at 12% 15%, #a37b4b22, transparent 38%),
+        radial-gradient(ellipse at 90% 88%, #94613b20, transparent 35%),
+        linear-gradient(140deg, #fff5d9, #ead7ae 60%, #f8e9c9);
+    color: #624833;
+    text-align: center;
+    box-shadow: 0 0 0 5px #c47be522, 0 18px 60px #0008;
+    animation: ouvertureParchemin .5s ease both;
+}
+
+.parchemin-etoile::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid #a98b604d;
+    pointer-events: none;
+}
+
+.croix-parchemin {
+    color: #79513b;
+}
+
+.deco-parchemin-etoile {
+    color: #a47c4e;
+    letter-spacing: 5px;
+}
+
+.numero-parchemin-etoile {
+    margin: 18px 0 8px;
+    color: #a17b50;
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.parchemin-etoile h3 {
+    margin: 8px 0 16px;
+    font: normal 30px 'Cormorant Garamond', Georgia, serif;
+    color: #79513b;
+}
+
+#texteParcheminEtoile {
+    position: relative;
+    color: #6f523b;
+    font: 17px/1.9 Georgia, 'Times New Roman', serif;
+    white-space: pre-line;
+}
+
+.bouton-etoile {
+    position: relative;
+    background: linear-gradient(135deg, #ac7caa, #79558f);
+    border-color: #c69bc9;
+}
+
+@media (max-width: 420px) {
+    .carte-menu-secret,
+    .carte-bocal {
+        padding: 34px 16px 20px;
+    }
+
+    .choix-secrets {
+        gap: 9px;
+    }
+
+    .choix-secret {
+        min-height: 170px;
+        padding: 14px 7px;
+    }
+
+    .titre-choix {
+        font-size: 20px;
+    }
+
+    .ciel-etoiles {
+        height: 230px;
+    }
+
+    .etoile-secret {
+        width: 45px;
+        height: 45px;
+        font-size: 26px;
+    }
+}
+
+/* ===== LE PORTAIL VERS NOTRE FUTUR ===== */
+
+.fenetre-avenir[hidden],
+.page-futur[hidden],
+.voile-futur[hidden] {
+    display: none !important;
+}
+
+.fenetre-avenir {
+    position: fixed;
+    inset: 0;
+    z-index: 11000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.fond-avenir {
+    position: absolute;
+    inset: 0;
+    background: rgba(44, 28, 36, .48);
+    backdrop-filter: blur(5px);
+}
+
+.carte-avenir {
+    position: relative;
+    z-index: 1;
+    width: min(390px, 100%);
+    padding: 34px 25px;
+    border: 1px solid #d8b3b8;
+    border-radius: 23px;
+    background: linear-gradient(145deg, #fffaf9, #f8eceb);
+    text-align: center;
+    box-shadow: 0 18px 60px #30202730;
+    animation: apparitionSouvenirs .4s ease-out;
+}
+
+.carte-avenir h2 {
+    margin: 0 0 12px;
+    font: 500 36px 'Cormorant Garamond', Georgia, serif;
+    color: #80535d;
+}
+
+.carte-avenir p {
+    font-size: 12px;
+    line-height: 1.9;
+    color: #8e7077;
+}
+
+.bouton-avenir {
+    margin-top: 14px;
+    padding: 13px 22px;
+    border: 1px solid #d5a0b2;
+    border-radius: 30px;
+    background: #986777;
+    color: white;
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.bouton-avenir:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 22px #d9a6c066;
+}
+
+/* Écran spatial */
+
+.page-futur {
+    position: fixed;
+    inset: 0;
+    z-index: 12000;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #03030a;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.etoiles-futur {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.etoile-futur {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 7px #fff, 0 0 15px #cbdcff;
+    animation: scintilleFutur var(--duree) ease-in-out infinite alternate;
+    animation-delay: var(--delai);
+}
+
+@keyframes scintilleFutur {
+    from { opacity: .15; transform: scale(.6); }
+    to { opacity: 1; transform: scale(1.8); }
+}
+
+.boite-lumineuse {
+    position: relative;
+    z-index: 2;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #fff;
+    border-radius: 9px;
+    background: linear-gradient(145deg, #ffffff, #cbd7ff 55%, #fff);
+    box-shadow:
+        0 0 15px #fff,
+        0 0 40px #a9c4ff,
+        0 0 100px #6c8bff88,
+        inset 0 0 18px white;
+    cursor: pointer;
+    animation: respirationBoite 2.4s ease-in-out infinite;
+    transition: transform .3s;
+}
+
+.boite-lumineuse:hover {
+    transform: scale(1.08);
+}
+
+.boite-lumineuse::before {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border: 1px solid #b8caff99;
+    border-radius: 13px;
+    animation: haloBoite 3s linear infinite;
+}
+
+@keyframes respirationBoite {
+    0%, 100% { filter: brightness(.85); }
+    50% { filter: brightness(1.5); }
+}
+
+@keyframes haloBoite {
+    from { transform: scale(.85); opacity: .2; }
+    to { transform: scale(1.3); opacity: .8; }
+}
+
+.invitation-futur {
+    position: absolute;
+    z-index: 2;
+    top: calc(50% + 90px);
+    width: 90%;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #cdd9ff;
+}
+
+/* Tunnel lumineux */
+
+
+/* Le tunnel occupe tout l'écran */
+.tunnel-futur {
+    position: fixed;
+    inset: 0;
+    z-index: 10010;
+    overflow: hidden;
+    perspective: 350px;
+    background:
+        radial-gradient(ellipse at center,
+            #38264d 0%,
+            #120d20 35%,
+            #030208 75%,
+            #000 100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.tunnel-futur.actif {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Le point lumineux au fond du tunnel */
+.tunnel-futur::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+    box-shadow:
+        0 0 20px 8px #fff,
+        0 0 60px 25px #d9baff,
+        0 0 120px 50px #9b5dff;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+/* Les anciennes cases deviennent des anneaux de perspective */
+.cadre-tunnel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 65vw;
+    height: 65vw;
+    max-width: 90vh;
+    max-height: 90vh;
+    border: 2px solid rgba(220, 183, 255, 0.7);
+    border-radius: 50%;
+    box-shadow:
+        0 0 18px rgba(186, 124, 255, 0.6),
+        inset 0 0 18px rgba(186, 124, 255, 0.3);
+    transform: translate(-50%, -50%) scale(0.03);
+    opacity: 0;
+}
+
+.tunnel-futur.actif .cadre-tunnel {
+    animation: anneauxVitesse 1.5s cubic-bezier(.15, .65, .35, 1) infinite;
+}
+
+.cadre-tunnel:nth-child(2) { animation-delay: 0.25s; }
+.cadre-tunnel:nth-child(3) { animation-delay: 0.5s; }
+.cadre-tunnel:nth-child(4) { animation-delay: 0.75s; }
+.cadre-tunnel:nth-child(5) { animation-delay: 1s; }
+.cadre-tunnel:nth-child(6) { animation-delay: 1.25s; }
+
+/* Les fils lumineux qui foncent vers nous */
+.fil-lumiere {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--longueur);
+    height: var(--epaisseur);
+    border-radius: 999px;
+    transform-origin: left center;
+    transform:
+        rotate(var(--angle))
+        translateX(0)
+        scaleX(0.02);
+    opacity: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        var(--couleur),
+        #fff
+    );
+    box-shadow: 0 0 8px var(--couleur);
+    animation: filerVersNous var(--vitesse) linear infinite;
+    animation-delay: var(--delai);
+    pointer-events: none;
+}
+
+@keyframes anneauxVitesse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.03);
+        opacity: 0;
+    }
+    12% { opacity: 0.85; }
+    100% {
+        transform: translate(-50%, -50%) scale(5);
+        opacity: 0;
+    }
+}
+
+@keyframes filerVersNous {
+    0% {
+        transform:
+            rotate(var(--angle))
+            translateX(0)
+            scaleX(0.02);
+        opacity: 0;
+    }
+    10% { opacity: 0.95; }
+    100% {
+        transform:
+            rotate(var(--angle))
+            translateX(var(--distance))
+            scaleX(1);
+        opacity: 0;
+    }
+}
+
+/* Le flash blanc qui nous propulse dans le tunnel */
+.flash-futur {
+    position: fixed;
+    inset: 0;
+    z-index: 10020;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.flash-futur.actif {
+    animation: flashEclair 0.85s ease-out forwards;
+}
+
+@keyframes flashEclair {
+    0% { opacity: 0; }
+    18% { opacity: 1; }
+    45% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Le carré blanc est aspiré vers nous */
+.boite-lumineuse {
+    position: relative;
+    z-index: 5;
+    width: 90px;
+    height: 90px;
+    border: 0;
+    background: white;
+    box-shadow:
+        0 0 25px white,
+        0 0 70px rgba(231, 204, 255, 0.9);
+    cursor: pointer;
+    animation: pulsationBoite 1.8s ease-in-out infinite;
+}
+
+.boite-lumineuse.zoom-final {
+    animation: zoomDansBoite 1.15s cubic-bezier(.65, 0, .9, .35) forwards;
+}
+
+@keyframes pulsationBoite {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+@keyframes zoomDansBoite {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    65% {
+        transform: scale(12);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(35);
+        opacity: 0;
+    }
+}
+
+/* Flash initial, au moment où le carré remplit l'écran */
+.flash-entree-futur {
+    position: fixed;
+    inset: 0;
+    z-index: 10015;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.flash-entree-futur.actif {
+    animation: flashEntree 1s ease-out forwards;
+}
+
+@keyframes flashEntree {
+    0%, 20% { opacity: 0; }
+    35%, 58% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fil-lumiere,
+    .tunnel-futur.actif .cadre-tunnel {
+        animation-duration: 3s;
+    }
+}
+
+.tunnel-futur .fil-lumiere {
+    animation-timing-function: cubic-bezier(.45, 0, .95, 1);
+    animation-duration: 2.8s;
+}
+
+.tunnel-futur .cadre-tunnel {
+    animation-timing-function: cubic-bezier(.45, 0, .95, 1);
+    animation-duration: 2.8s;
+}
+
+.tunnel-futur.acceleration .fil-lumiere {
+    animation-duration: 0.9s;
+}
+
+.tunnel-futur.acceleration .cadre-tunnel {
+    animation-duration: 0.9s;
+}
+
+
+.tunnel-futur.acceleration::before {
+    box-shadow:
+        0 0 35px 15px white,
+        0 0 100px 45px #e4c4ff,
+        0 0 180px 80px #a65dff;
+}
+
+/* Les pages et messages du futur restent cachés avant leur activation */
+#pageFutur[hidden],
+#fenetreAvenir[hidden],
+#messageFutur[hidden] {
+    display: none !important;
+}
+
+#messageFutur {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    filter: blur(12px);
+    transform: scale(1.04);
+    transition:
+        opacity 1.2s ease,
+        filter 1.2s ease,
+        transform 1.2s ease,
+        visibility 1.2s;
+}
+
+
+#messageFutur {
+    opacity: 0;
+    visibility: hidden;
+    filter: blur(18px);
+    transform: scale(1.06);
+    transition:
+        opacity 1.8s ease,
+        filter 1.8s ease,
+        transform 1.8s ease,
+        visibility 1.8s;
+}
+
+#messageFutur.visible {
+    opacity: 1;
+    visibility: visible;
+    filter: blur(0);
+    transform: scale(1);
+}
+
+
+/* Le point central devient un immense cercle lumineux */
+
+.tunnel-futur.point-final::before {
+    animation: pointVersEcran 1.5s cubic-bezier(.55, 0, .9, 1) forwards;
+    box-shadow:
+        0 0 40px 20px #ffffff,
+        0 0 100px 60px #fff5ff,
+        0 0 180px 100px #e9c4ff,
+        0 0 300px 160px #b66bff,
+        0 0 500px 240px #813bff;
+    z-index: 10;
+}
+
+@keyframes pointVersEcran {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(0);
+    }
+    35% {
+        transform: translate(-50%, -50%) scale(12);
+        filter: blur(3px);
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(100);
+        filter: blur(12px);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(300);
+        filter: blur(30px);
+    }
+}
+
+#messageFutur {
+    opacity: 0;
+    visibility: hidden;
+    filter: blur(18px);
+    transform: scale(1.06);
+    transition:
+        opacity 1.5s ease,
+        filter 1.5s ease,
+        transform 1.5s ease,
+        visibility 1.5s;
+}
+
+#messageFutur.visible {
+    opacity: 1;
+    visibility: visible;
+    filter: blur(0);
+    transform: scale(1);
+}
+
+/* Petit halo qui s'estompe pendant la transition */
+#pageFutur {
+    transition: filter 1s ease, opacity 1s ease;
+}
+
+#pageFutur.sortie-futur {
+    filter: blur(12px) brightness(1.8);
+}
+
+.recommencer-futur {
+    position: relative;
+    margin-top: 28px;
+    padding: 15px 30px;
+    border: 1px solid rgba(255, 225, 255, 0.75);
+    border-radius: 50px;
+    color: #fff8ff;
+    background: linear-gradient(
+        135deg,
+        rgba(160, 103, 205, 0.35),
+        rgba(76, 43, 108, 0.65)
+    );
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 0 18px rgba(207, 158, 255, 0.25),
+        inset 0 0 15px rgba(255, 255, 255, 0.06);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+.recommencer-futur:hover {
+    transform: translateY(-3px) scale(1.04);
+    background: linear-gradient(
+        135deg,
+        rgba(190, 135, 235, 0.6),
+        rgba(105, 61, 145, 0.8)
+    );
+    box-shadow:
+        0 0 25px rgba(222, 184, 255, 0.65),
+        0 0 60px rgba(164, 102, 255, 0.3),
+        inset 0 0 18px rgba(255, 255, 255, 0.15);
+}
+
+.recommencer-futur:active {
+    transform: scale(0.97);
+}
+
+/* Le point central grandit continuellement avec la vitesse */
+.tunnel-futur::before {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    box-shadow:
+        0 0 15px 8px white,
+        0 0 40px 20px #f5ddff,
+        0 0 90px 45px #c58bff;
+    transform: translate(-50%, -50%) scale(var(--point-taille, 1));
+    transition: box-shadow 0.3s ease;
+}
+
+/* La lumière explose pour recouvrir l'écran */
+.tunnel-futur.point-final::before {
+    animation: explosionLumineuse 1.4s ease-in forwards;
+    box-shadow:
+        0 0 50px 25px white,
+        0 0 120px 70px #fff,
+        0 0 250px 150px #e9c4ff,
+        0 0 450px 250px #a85cff;
+    z-index: 20;
+}
+
+
+@keyframes explosionLumineuse {
+    0% {
+        transform: translate(-50%, -50%) scale(var(--point-taille, 1));
+        filter: blur(0);
+    }
+    45% {
+        transform: translate(-50%, -50%) scale(12);
+        filter: blur(4px);
+    }
+    75% {
+        transform: translate(-50%, -50%) scale(70);
+        filter: blur(12px);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(220);
+        filter: blur(25px);
+    }
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <main class="page">
+
+        <div class="petit-coeur">♡</div>
+
+        <h1>Notre histoire</h1>
+
+        <p class="sous-titre">
+            Un petit monde à nous deux,
+            rempli de souvenirs, de mots doux
+            et de jolies surprises.
+        </p>
+
+        <div class="menu">
+
+            <button class="bouton" onclick="ouvrirSurprise('album')">
+                <span class="icone">♡</span>
+                <span class="nom-bouton">Notre album</span>
+            </button>
+
+            <button class="bouton" onclick="ouvrirSurprise('mot')">
+                <span class="icone">✉</span>
+                <span class="nom-bouton">Un mot pour toi</span>
+            </button>
+
+            <button class="bouton" onclick="ouvrirSurprise('souvenirs')">
+                <span class="icone">✧</span>
+                <span class="nom-bouton">Nos souvenirs</span>
+            </button>
+
+            <button class="bouton" onclick="ouvrirSurprise('jeu')">
+                <span class="icone">☾</span>
+                <span class="nom-bouton">Un petit jeu</span>
+            </button>
+
+            <button class="bouton" onclick="ouvrirSurprise('secret')">
+                <span class="icone">✦</span>
+                <span class="nom-bouton">Une surprise secrète</span>
+            </button>
+
+            <button class="bouton" onclick="ouvrirSurprise('avenir')">
+                <span class="icone">∞</span>
+                <span class="nom-bouton">Et la suite...</span>
+            </button>
+
+        </div>
+
+        <section id="surprise" aria-live="polite">
+            <h2 id="titreSurprise"></h2>
+            <p id="texteSurprise"></p>
+            <button class="fermer" onclick="fermerSurprise()">
+                Retour à notre univers
+            </button>
+        </section>
+<!-- Notre histoire, en six souvenirs cachés -->
+
+<!-- Fenêtre des souvenirs secrets -->
+<section id="zoneSouvenirs" class="zone-souvenirs" hidden>
+    <div class="fond-souvenirs" onclick="fermerSouvenirs()"></div>
+
+    <div class="fenetre-souvenirs" role="dialog"
+         aria-modal="true" aria-labelledby="titreSouvenirs">
+
+        <button class="croix-souvenirs" onclick="fermerSouvenirs()"
+                aria-label="Fermer les souvenirs">×</button>
+
+        <div class="entete-souvenirs">✧ NOTRE PETIT JARDIN SECRET ✧</div>
+        <h2 id="titreSouvenirs">Nos petits instants</h2>
+        <p class="description-souvenirs">
+            Six petits secrets, six morceaux de notre histoire.
+            Lequel veux-tu découvrir ? ♡
+        </p>
+
+        <div class="grille-souvenirs" id="grilleSouvenirs">
+            <button class="case-souvenir" onclick="ouvrirSouvenir(0)">
+                <span class="cadenas">🔒</span>
+                <span>Secret n°1</span>
+            </button>
+            <button class="case-souvenir" onclick="ouvrirSouvenir(1)">
+                <span class="cadenas">🔒</span>
+                <span>Secret n°2</span>
+            </button>
+            <button class="case-souvenir" onclick="ouvrirSouvenir(2)">
+                <span class="cadenas">🔒</span>
+                <span>Secret n°3</span>
+            </button>
+            <button class="case-souvenir" onclick="ouvrirSouvenir(3)">
+                <span class="cadenas">🔒</span>
+                <span>Secret n°4</span>
+            </button>
+            <button class="case-souvenir" onclick="ouvrirSouvenir(4)">
+                <span class="cadenas">🔒</span>
+                <span>Secret n°5</span>
+            </button>
+            <button class="case-souvenir" onclick="ouvrirSouvenir(5)">
+                <span class="cadenas">🔒</span>
+                <span>Secret n°6</span>
+            </button>
+        </div>
+
+        <p class="pied-souvenirs">Faits de petits riens, précieux pour toujours ♡</p>
+    </div>
+
+    <!-- Carte qui apparaît par-dessus les six cases -->
+    <div id="voileSouvenir" class="voile-souvenir" hidden>
+        <div class="carte-secret" role="dialog" aria-modal="true"
+             aria-labelledby="titreSecret">
+
+            <button class="croix-souvenirs croix-carte"
+                    onclick="fermerCarteSouvenir()"
+                    aria-label="Fermer ce souvenir">×</button>
+
+            <div class="petit-coeur">♡</div>
+            <p id="numeroSecret" class="numero-secret">UN SECRET POUR NOUS</p>
+            <h3 id="titreSecret">Un instant à nous</h3>
+            <p id="texteSecret"></p>
+
+            <div class="actions-secret">
+                <button class="bouton-secret bouton-suivant"
+                        onclick="souvenirSuivant()">
+                    Le suivant ♡
+                </button>
+                <button class="bouton-secret"
+                        onclick="fermerCarteSouvenir()">
+                    Refermer le secret
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Menu des deux surprises secrètes -->
+<section id="menuSecret" class="fenetre-menu-secret" hidden>
+    <div class="fond-menu-secret" onclick="fermerMenuSecret()"></div>
+
+    <div class="carte-menu-secret">
+        <button class="croix-secret" onclick="fermerMenuSecret()" aria-label="Fermer">×</button>
+
+        <p class="surtitre-secret">JUSTE POUR NOUS ♡</p>
+        <h2>Choisis ta surprise</h2>
+        <p class="intro-menu-secret">Deux petits univers, deux façons de découvrir des mots rien qu'à nous.</p>
+
+        <div class="choix-secrets">
+            <button class="choix-secret choix-bocal" onclick="ouvrirBocal()">
+                <span class="illustration-choix">🫙</span>
+                <span class="titre-choix">Le bocal à mots</span>
+                <span class="description-choix">Un petit mot tiré au hasard</span>
+            </button>
+
+            <button class="choix-secret choix-etoiles" onclick="ouvrirUniversEtoiles()">
+                <span class="illustration-choix">✦</span>
+                <span class="titre-choix">Notre ciel secret</span>
+                <span class="description-choix">Six étoiles, six messages cachés</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Expérience du bocal -->
+<section id="fenetreBocal" class="fenetre-experience" hidden>
+    <div class="fond-menu-secret" onclick="fermerBocal()"></div>
+
+    <div class="carte-bocal">
+        <button class="croix-secret" onclick="fermerBocal()" aria-label="Fermer">×</button>
+        <p class="surtitre-secret">UN PETIT MOT POUR TOI</p>
+        <h2>Le bocal des tendresses</h2>
+        <p class="intro-menu-secret">Ouvre le bocal et pioche un mot. Laisse le hasard choisir pour toi. ♡</p>
+
+        <button id="dessinBocal" class="dessin-bocal" onclick="ouvrirLeBocal()" aria-label="Ouvrir le bocal">
+            <span class="couvercle-bocal"></span>
+            <span class="coeur-bocal">♡</span>
+            <span class="petit-mot-bocal">un mot<br>pour toi</span>
+            <span class="reflet-bocal"></span>
+        </button>
+
+        <p id="instructionBocal" class="instruction-bocal">Appuie sur le bocal pour l'ouvrir</p>
+
+        <div id="resultatBocal" class="resultat-bocal" hidden>
+            <span class="petit-ornement">✧</span>
+            <p id="motPioche" aria-live="polite"></p>
+            <span class="petit-ornement">♡</span>
+        </div>
+
+        <button id="boutonPiocher" class="bouton-doux" onclick="piocherUnMot()" hidden>
+            Piocher un petit mot ♡
+        </button>
+        <button class="retour-experience" onclick="retourMenuSecret()">Retour aux surprises</button>
+    </div>
+</section>
+
+<!-- Univers des six étoiles -->
+<section id="universEtoiles" class="fenetre-experience univers-nuit" hidden>
+    <div class="fond-nuit" onclick="fermerUniversEtoiles()"></div>
+
+    <div class="carte-ciel">
+        <button class="croix-secret croix-nuit" onclick="fermerUniversEtoiles()" aria-label="Fermer">×</button>
+        <p class="surtitre-nuit">LÀ OÙ NOS SECRETS BRILLENT</p>
+        <h2>Notre petit ciel</h2>
+        <p class="intro-nuit">Choisis une étoile, elle garde un mot pour toi.</p>
+
+        <div class="ciel-etoiles">
+            <button class="etoile-secret etoile-1" onclick="ouvrirEtoile(0)" aria-label="Découvrir l'étoile 1">✦</button>
+            <button class="etoile-secret etoile-2" onclick="ouvrirEtoile(1)" aria-label="Découvrir l'étoile 2">✦</button>
+            <button class="etoile-secret etoile-3" onclick="ouvrirEtoile(2)" aria-label="Découvrir l'étoile 3">✦</button>
+            <button class="etoile-secret etoile-4" onclick="ouvrirEtoile(3)" aria-label="Découvrir l'étoile 4">✦</button>
+            <button class="etoile-secret etoile-5" onclick="ouvrirEtoile(4)" aria-label="Découvrir l'étoile 5">✦</button>
+            <button class="etoile-secret etoile-6" onclick="ouvrirEtoile(5)" aria-label="Découvrir l'étoile 6">✦</button>
+        </div>
+
+        <p class="legende-nuit">Six petites lumières, juste pour toi ♡</p>
+        <button class="retour-experience retour-nuit" onclick="retourMenuSecret()">Retour aux surprises</button>
+    </div>
+
+    <!-- Parchemin affiché par-dessus le ciel -->
+    <div id="voileEtoile" class="voile-etoile" hidden>
+        <div class="parchemin-etoile" role="dialog" aria-modal="true" aria-labelledby="titreParcheminEtoile">
+            <button class="croix-secret croix-parchemin" onclick="fermerEtoile()" aria-label="Refermer le message">×</button>
+            <span class="deco-parchemin-etoile">✧ ❦ ✧</span>
+            <p id="numeroParcheminEtoile" class="numero-parchemin-etoile">UN MOT SOUS LES ÉTOILES</p>
+            <h3 id="titreParcheminEtoile">Un secret pour toi</h3>
+            <p id="texteParcheminEtoile"></p>
+            <button class="bouton-doux bouton-etoile" onclick="fermerEtoile()">Garder ce mot près du cœur ♡</button>
+        </div>
+    </div>
+</section>
+
+<section id="album" class="zone-album">
+    <h2>Nos plus beaux souvenirs ♡</h2>
+    <p>Quelques petits instants de notre histoire...</p>
+
+ <div class="album-defilant">
+    <button class="fleche-album gauche" onclick="defilerAlbum(-1)" aria-label="Photos précédentes">‹</button>   
+<div class="galerie">
+    <img src="photos/photo1.jpg" alt="Notre souvenir 1" onclick="agrandirPhoto(this)">
+    <img src="photos/photo2.jpg" alt="Notre souvenir 2" onclick="agrandirPhoto(this)">
+    <img src="photos/photo3.jpg" alt="Notre souvenir 3" onclick="agrandirPhoto(this)">
+    <img src="photos/photo4.jpg" alt="Notre souvenir 4" onclick="agrandirPhoto(this)">
+    <img src="photos/photo5.jpg" alt="Notre souvenir 5" onclick="agrandirPhoto(this)">
+    <img src="photos/photo7.jpg" alt="Notre souvenir 7" onclick="agrandirPhoto(this)">
+    <img src="photos/photo8.jpg" alt="Notre souvenir 8" onclick="agrandirPhoto(this)">
+</div>
+    <button class="fleche-album droite" onclick="defilerAlbum(1)" aria-label="Photos suivantes">›</button>
+</div>
+    <button class="fermer" onclick="fermerAlbum()">
+        Retour à notre univers
+    </button>
+</section>
+
+<!-- Petite fenêtre de transition -->
+<section id="fenetreAvenir" class="fenetre-avenir" hidden>
+    <div class="fond-avenir" onclick="fermerFenetreAvenir()"></div>
+
+    <div class="carte-avenir" role="dialog" aria-modal="true">
+        <h2>Et si on continuait ?</h2>
+        <p>
+            Il reste encore une petite porte à ouvrir…
+            Elle ne parle pas du passé, mais de tout ce qui nous attend. ♡
+        </p>
+        <button class="bouton-avenir" onclick="entrerDansLeFutur()">
+            Découvrir la suite ✧
+        </button>
+        <br>
+        <button class="fermer" onclick="fermerFenetreAvenir()">
+            Pas encore
+        </button>
+    </div>
+</section>
+
+<!-- Univers noir et boîte lumineuse -->
+<section id="pageFutur" class="page-futur" hidden>
+    <div id="etoilesFutur" class="etoiles-futur"></div>
+
+    <button class="boite-lumineuse"
+            onclick="lancerTunnelFutur()"
+            aria-label="Ouvrir la boîte lumineuse"></button>
+
+    <p class="invitation-futur">UNE LUMIÈRE POUR DEMAIN</p>
+
+    <div id="tunnelFutur" class="tunnel-futur">
+        <div class="cadre-tunnel"></div>
+        <div class="cadre-tunnel"></div>
+        <div class="cadre-tunnel"></div>
+        <div class="cadre-tunnel"></div>
+        <div class="cadre-tunnel"></div>
+        <div class="cadre-tunnel"></div>
+    </div>
+
+    <div id="flashFutur" class="flash-futur"></div>
+    <div id="flashEntreeFutur" class="flash-entree-futur"></div>
+    
+<div id="flashEntreeFutur" class="flash-entree-futur"></div>
+
+<div id="messageFutur" class="message-futur" hidden>
+
+    <h2>Tu croyais que c'était tout ?</h2>
+
+    <p>
+        Loin de là, notre amour viens tout juste de commencer.<br>
+        Le plus beau de notre histoire ne se trouve non pas derrière nous,
+        mais dans tous les jours futurs qu'il nous reste à vivre ensemble.
+    </p>
+
+    <p>
+        Il nous reste tant de rires, de rêves, de voyages,
+        de petites habitudes et de souvenirs à inventer.<br>
+        <strong>Et ça je veux les découvrir avec toi. ♡</strong>
+    </p>
+
+    <button class="recommencer-futur" onclick="recommencerFutur()">
+        Revenir à notre univers
+    </button>
+</div>
+
+</section>
+
+<div id="visionneuse" onclick="fermerPhoto()">
+    <img id="photoAgrandie" src="" alt="Photo agrandie">
+    <p>Appuie n'importe où pour fermer</p>
+</div>
+
+        <div class="petite-signature">
+            Toi, moi, et tout ce qui nous attend ♡
+        </div>
+
+    </main>
+
+    <script>
+        // Création des petites étoiles
+       
+
+
+for (let i = 0; i < 10; i++) {
+    const etoile = document.createElement("div");
+
+    etoile.classList.add("etoile");
+
+    etoile.style.left = Math.random() * 100 + "%";
+    etoile.style.top = Math.random() * 100 + "%";
+
+    etoile.style.animationDuration =
+        (2 + Math.random() * 4) + "s";
+
+    etoile.style.animationDelay =
+        Math.random() * 4 + "s";
+
+    document.body.appendChild(etoile);
+}
+
+
+
+
+    
+
+function ouvrirSurprise(type) {
+    
+if (type === "avenir") {
+    document.getElementById("surprise").classList.remove("visible");
+    document.getElementById("album").classList.remove("visible");
+    document.getElementById("fenetreAvenir").hidden = false;
+    return;
+}
+
+    const titre = document.getElementById("titreSurprise");
+    const texte = document.getElementById("texteSurprise");
+    const zone = document.getElementById("surprise");
+
+    // Ouvrir les six souvenirs secrets
+    if (type === "souvenirs") {
+        zone.classList.remove("visible");
+        document.getElementById("album").classList.remove("visible");
+        ouvrirFenetreSouvenirs();
+        return;
+    }
+
+    if (type === "secret") {
+    fermerMenuSecret();
+    document.getElementById("menuSecret").hidden = false;
+    return;
+    }
+
+    // Ouvrir le parchemin
+    if (type === "mot") {
+        const parchemin = document.getElementById("parchemin");
+        parchemin.classList.add("visible");
+        parchemin.setAttribute("aria-hidden", "false");
+        return;
+    }
+
+    // Ouvrir l'album photo
+    if (type === "album") {
+        zone.classList.remove("visible");
+        document.getElementById("album").classList.add("visible");
+
+        document.getElementById("album").scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+        return;
+    }
+
+    // Contenu des autres surprises
+    const contenus = {
+        jeu: {
+            titre: "Un petit jeu 💗",
+            texte: `
+                <div class="jeu-amour">
+                    <p class="jeu-intro">
+                        💗 Un petit voyage dans notre histoire 💗
+                    </p>
+
+                    <p>
+                        Quatre petits jeux nous attendent :
+                        un quiz, des questions à cœur ouvert,
+                        des mots doux et nos rêves à deux.
+                    </p>
+
+                    <div class="jeu-progression">
+                        <span id="etapeJeu">Jeu 1 sur 4</span>
+                        <div class="jeu-barre">
+                            <div id="progressionJeu"></div>
+                        </div>
+                    </div>
+
+                    <div id="contenuEtapeJeu"></div>
+                    <p id="retourJeu" aria-live="polite"></p>
+
+                    <button type="button"
+                            id="boutonSuivantJeu"
+                            onclick="etapeSuivanteJeu()">
+                        Prochain jeu 💗
+                    </button>
+                </div>
+            `
+        },
+
+        secret: {
+            titre: "Un secret rien qu'à nous ✦",
+            texte: "Il y a encore tant de choses que j'ai envie de te dire, tant de souvenirs à créer et tant de surprises à partager avec toi."
+        },
+
+        avenir: {
+            titre: "Et la suite... ∞",
+            texte: "Notre histoire ne s'arrête pas à cette page. Le plus beau reste peut-être encore à écrire."
+        }
+    };
+
+    // Éviter une erreur si le type demandé n'existe pas
+    if (!contenus[type]) return;
+
+    titre.textContent = contenus[type].titre;
+
+    if (type === "jeu") {
+        texte.innerHTML = contenus[type].texte;
+
+        // Réinitialiser le mini-jeu
+        etapeActuelleJeu = 0;
+        jeuActuel = 0;
+        questionQuizActuelle = 0;
+        reponsesQuiz = [];
+        reinitialiserMessages();
+    } else {
+        texte.textContent = contenus[type].texte;
+    }
+
+    zone.classList.remove("visible");
+    void zone.offsetWidth;
+    zone.classList.add("visible");
+
+    if (type === "jeu") {
+        afficherEtapeJeu();
+    }
+
+    zone.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+}
+
+
+function fermerSurprise() {
+            document.querySelector("#surprise")
+                .classList.remove("visible");
+        }
+        
+function fermerAlbum() {
+    document.querySelector("#album").classList.remove("visible");
+}
+
+function fermerSouvenirs() {
+    document.getElementById("zoneSouvenirs").hidden = true;
+}
+function agrandirPhoto(photo) {
+    const visionneuse = document.querySelector("#visionneuse");
+    const photoAgrandie = document.querySelector("#photoAgrandie");
+
+    photoAgrandie.src = photo.src;
+    photoAgrandie.alt = photo.alt;
+
+    visionneuse.classList.add("visible");
+}
+
+function fermerPhoto() {
+    document.querySelector("#visionneuse").classList.remove("visible");
+}
+
+function defilerAlbum(direction) {
+    const galerie = document.querySelector(".galerie");
+
+    galerie.scrollBy({
+        left: direction * 250,
+        behavior: "smooth"
+    });
+}
+
+/* Création des petites lumières flottantes */
+
+for (let i = 0; i < 50; i++) {
+    const lumiere = document.createElement("div");
+    lumiere.className = "lumiere-flottante";
+
+    lumiere.style.left = Math.random() * 100 + "vw";
+    lumiere.style.width = (8 + Math.random() * 18) + "px";
+    lumiere.style.height = lumiere.style.width;
+
+    lumiere.style.setProperty(
+        "--duree",
+        (12 + Math.random() * 15) + "s"
+    );
+
+    lumiere.style.setProperty(
+        "--delai",
+        (-Math.random() * 25) + "s"
+    );
+
+    document.body.appendChild(lumiere);
+}
+
+/* Création de petits cœurs qui remontent */
+for (let i = 0; i < 20; i++) {
+    const coeur = document.createElement("div");
+    coeur.className = "coeur-flottant";
+    coeur.textContent = "♡";
+
+    coeur.style.left = Math.random() * 100 + "vw";
+    coeur.style.setProperty("--taille", (14 + Math.random() * 14) + "px");
+    coeur.style.setProperty("--duree", (15 + Math.random() * 12) + "s");
+    coeur.style.setProperty("--delai", (-Math.random() * 25) + "s");
+
+    document.body.appendChild(coeur);
+}
+
+
+let etapeActuelleJeu = 0;
+let jeuActuel = 0;
+let questionQuizActuelle = 0;
+let reponsesQuiz = [];
+
+const questionsQuiz = [
+    {
+        question: "Quel est mon petit plaisir préféré avec toi ?",
+        choix: [
+            "Passer un moment dans tes bras",
+            "Regarder un film ensemble",
+            "Partir à l'aventure dehors"
+        ],
+        reponse: 0
+    },
+    {
+        question: "Quel souvenir aimerais-je revivre ?",
+        choix: [
+            "Un moment où nous avons beaucoup ri",
+            "Notre première rencontre",
+            "Une journée passée ensemble"
+        ],
+        reponse: 1
+    },
+    {
+        question: "Qu'est-ce qui compte le plus dans notre couple ?",
+        choix: [
+            "Les attentions",
+            "L'écoute et la confiance",
+            "Les grandes sorties"
+        ],
+        reponse: 1
+    },
+    {
+        question: "Qu'est-ce que j'aime chez toi ?",
+        choix: [
+            "Ta beauté",
+            "Ta personnalité",
+            "Ton intelligence"
+        ],
+        reponse: null,
+        messageSpecial:
+            "J'aime tout chez toi, chaque petit détail qui fait que tu es toi. ❤️"
+    }
+];
+
+const questionsSansFiltre = {
+    titre: "💌 À cœur ouvert",
+    intro: "Chacun son tour : posez-vous ces trois questions et répondez avec sincérité.",
+    questions: [
+        "Qu'est-ce que tu préfères dans notre relation ?",
+        "Y a-t-il quelque chose que tu aimerais que nous fassions davantage ensemble ?",
+        "Quel est un souvenir avec moi que tu garderas toujours ?"
+    ]
+};
+
+const qualitesPreferees = {
+    titre: "❤️ Qualités",
+    intro: "Chacun écrit trois qualités qu'il aime chez l'autre.",
+    questions: [
+        "Première qualité que j'aime chez toi…",
+        "Deuxième qualité que j'aime chez toi…",
+        "Troisième qualité que j'aime chez toi…"
+    ]
+};
+
+const notrePetitReve = {
+    titre: "✨ Notre petit rêve",
+    intro: "À vous deux d'imaginer la suite de votre histoire.",
+    questions: [
+        "Une chose que j'aimerais vivre avec toi…",
+        "Un endroit où j'aimerais aller avec toi…",
+        "Un rêve que j'aimerais réaliser à tes côtés…"
+    ]
+};
+
+const messagesBonneReponse = [
+    "C'est ça, tu me connais si bien ! 🥹💗",
+    "Exact mon cœur, tu as trouvé ! 💕",
+    "Tout pile ! T'es trop forte ! 🥰"
+];
+
+const messagesMauvaiseReponse = [
+    "Oups, petit indice pour la prochaine fois ! 💌",
+    "Pas tout à fait, mais je t'en veux pas, t'inquiète 😉",
+    "Ce sera l'occasion d'apprendre encore un petit quelque chose sur nous 💕"
+];
+
+let ordreMessagesBons = [];
+let ordreMessagesMauvais = [];
+let bonnesReponsesUtilisees = [];
+let mauvaisesReponsesUtilisees = [];
+
+function melanger(tableau) {
+    const copie = [...tableau];
+
+    for (let i = copie.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copie[i], copie[j]] = [copie[j], copie[i]];
+    }
+
+    return copie;
+}
+
+function prochainMessage(ordre, utilises) {
+    const disponible = ordre.filter(
+        message => !utilises.includes(message)
+    );
+
+    if (disponible.length === 0) {
+        return "";
+    }
+
+    const message = disponible[0];
+    utilises.push(message);
+    return message;
+}
+
+function reinitialiserMessages() {
+    bonnesReponsesUtilisees = [];
+    mauvaisesReponsesUtilisees = [];
+    ordreMessagesBons = melanger(messagesBonneReponse);
+    ordreMessagesMauvais = melanger(messagesMauvaiseReponse);
+}
+
+reinitialiserMessages();
+
+function afficherEtapeJeu() {
+    const contenu = document.getElementById("contenuEtapeJeu");
+    const titreEtape = document.getElementById("etapeJeu");
+    const progression = document.getElementById("progressionJeu");
+    const retour = document.getElementById("retourJeu");
+    const bouton = document.getElementById("boutonSuivantJeu");
+
+    if (!contenu || !titreEtape || !progression || !retour || !bouton) {
+        return;
+    }
+
+    const titres = [
+        "💌 Jeu 1 — Notre petit quiz",
+        questionsSansFiltre.titre,
+        qualitesPreferees.titre,
+        notrePetitReve.titre
+    ];
+
+    titreEtape.textContent = `Jeu ${jeuActuel + 1} sur 4`;
+    progression.style.width = `${((jeuActuel + 1) / 4) * 100}%`;
+    retour.textContent = "";
+    contenu.innerHTML = `<h3>${titres[jeuActuel]}</h3>`;
+
+    if (jeuActuel === 0) {
+        afficherQuestionQuiz(contenu, retour);
+    } else {
+        const activites = [
+            null,
+            questionsSansFiltre,
+            qualitesPreferees,
+            notrePetitReve
+        ];
+
+        const activite = activites[jeuActuel];
+        contenu.insertAdjacentHTML("beforeend", `<p>${activite.intro}</p>`);
+
+        activite.questions.forEach(question => {
+            const bloc = document.createElement("div");
+            bloc.className = "question-personnelle";
+
+            const label = document.createElement("label");
+            label.textContent = question;
+
+            const champ = document.createElement("textarea");
+            champ.rows = 2;
+            champ.placeholder = "Écris ta réponse ici…";
+            champ.className = "reponse-personnelle";
+
+            label.appendChild(champ);
+            bloc.appendChild(label);
+            contenu.appendChild(bloc);
+        });
+    }
+
+    bouton.textContent = jeuActuel === 3
+        ? "Recommencer les jeux 💗"
+        : "Prochain jeu 💗";
+}
+
+function afficherQuestionQuiz(contenu, retour) {
+    const question = questionsQuiz[questionQuizActuelle];
+
+    contenu.insertAdjacentHTML(
+        "beforeend",
+        `<p>Question ${questionQuizActuelle + 1} sur ${questionsQuiz.length}</p>`
+    );
+
+    const texteQuestion = document.createElement("p");
+    texteQuestion.textContent = question.question;
+    contenu.appendChild(texteQuestion);
+
+    question.choix.forEach((choix, index) => {
+        const boutonChoix = document.createElement("button");
+        boutonChoix.type = "button";
+        boutonChoix.className = "choix-jeu";
+        boutonChoix.textContent = choix;
+
+        boutonChoix.addEventListener("click", () => {
+            // Une question déjà validée ne peut pas être rejouée.
+            if (reponsesQuiz[questionQuizActuelle] !== undefined) {
+                return;
+            }
+
+            // Question spéciale : toutes les réponses sont acceptées.
+            if (question.messageSpecial) {
+                retour.textContent = question.messageSpecial;
+                reponsesQuiz[questionQuizActuelle] = index;
+
+            } else if (index === question.reponse) {
+                const message = prochainMessage(
+                    ordreMessagesBons,
+                    bonnesReponsesUtilisees
+                );
+
+                retour.textContent = message || "Bravo, mon cœur ! 💗";
+                reponsesQuiz[questionQuizActuelle] = index;
+
+            } else {
+                const message = prochainMessage(
+                    ordreMessagesMauvais,
+                    mauvaisesReponsesUtilisees
+                );
+
+                retour.textContent = message ||
+                    "Essaie encore, mon cœur 💗";
+
+                // La mauvaise réponse reste réessayable.
+                return;
+            }
+
+            contenu.querySelectorAll(".choix-jeu").forEach(b => {
+                b.disabled = true;
+            });
+
+            document.getElementById("boutonSuivantJeu").textContent =
+                questionQuizActuelle < questionsQuiz.length - 1
+                    ? "Question suivante 💗"
+                    : "Prochain jeu 💗";
+        });
+
+        contenu.appendChild(boutonChoix);
+    });
+}
+
+function etapeSuivanteJeu() {
+    const contenu = document.getElementById("contenuEtapeJeu");
+    const retour = document.getElementById("retourJeu");
+
+    if (jeuActuel === 0) {
+        if (reponsesQuiz[questionQuizActuelle] === undefined) {
+            retour.textContent = "Choisis la bonne réponse pour continuer 💗";
+            return;
+        }
+
+        if (questionQuizActuelle < questionsQuiz.length - 1) {
+            questionQuizActuelle++;
+            afficherEtapeJeu();
+            return;
+        }
+    } else {
+        const champs = contenu.querySelectorAll("textarea");
+
+        if ([...champs].some(champ => !champ.value.trim())) {
+            retour.textContent =
+                "Prenez le temps de répondre à chaque question 💕";
+            return;
+        }
+    }
+
+    if (jeuActuel < 3) {
+        jeuActuel++;
+        afficherEtapeJeu();
+    } else {
+        jeuActuel = 0;
+        questionQuizActuelle = 0;
+        reponsesQuiz = [];
+        reinitialiserMessages();
+        afficherEtapeJeu();
+    }
+}
+
+
+function fermerParchemin() {
+    const parchemin = document.getElementById("parchemin");
+
+    parchemin.classList.remove("visible");
+    parchemin.setAttribute("aria-hidden", "true");
+}
+
+function fermerParcheminExterieur(event) {
+    if (event.target.id === "parchemin") {
+        fermerParchemin();
+    }
+}
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        fermerParchemin();
+    }
+});
+
+
+const souvenirsSecrets = [
+    {
+        titre: "Notre première vraie rencontre",
+        texte: "C'est quand même fou... c'est fou qu'une simple petite discussion en SNT ait signé un tournant dans ma vie que je n'oublierai jamais. ♡"
+    },
+    {
+        titre: "Notre premier baiser",
+        texte: "Sur nos petits quais de Rhône, un vendredi il me semble. Si tu savais comment je me pissais dessus avant de le faire... j'avais l'impression que mon coeur allait exploser c'était hardcore... Mais bon, le jeu en vallait largement la chandelle 🥰"
+    },
+    {
+        titre: "Notre premier date (je crois)",
+        texte: "Ralala, le parc de la Tête-d'Or, que de souvenir... Avec le vent bien froid et moi qui tremblait comme une merde mdrr, c'était nos premiers bisous aussi ! (sur la joue certes, mais m'en fou ça compte), c'était vraiment apaisant quand j'y repense..."
+    },
+    {
+        titre: "Notre première sortie",
+        texte: "Tu sais celle où je t'ai accompagné pour acheter un cadeau pour ta mère que t'as pas pu lui donner puisque que tu l'avais pas récupéré (c'est entièrement de ta faute je me dédoigne de toutes responsabilités.) Je rigole"
+    },
+    {
+        titre: "Notre première nuit ensemble",
+        texte: "Chez Anaé, comme des clochards sur le carrelage de la cuisine, avec un ventilo de travers, celui de Mathilde et Victor à 167db pour bien cacher leurs prélis que t'étais à deux doigts de foutre en l'air... j'suis nostalgique un peu.🥲"
+    },
+    {
+        titre: "Notre première journée ensemble",
+        texte: "Une journée complète à faire de la bouffe pour une fête. Enfin sur le papier parce que Dieu sait qu'on a vraiment fait tout sauf ça... surtout les.. ah comment ça s'appelle déjà ? Ah oui les grosses galoches de 45min pour la première fois on se sait. Et dire qu'on se moquait de Sarah avec ses 20min... franchement.. alors que depuis qu'on y a goûté j'ai pas honte de le dire : ça y va quoi, des 45min par ci des 1h voir plus par là... Ah nan mais on lèche la  vie à pleine langue c'est terrible 🤣"
+    }
+];
+
+function afficherGrilleSouvenirs() {
+    const grille = document.getElementById("grilleSouvenirs");
+    grille.querySelectorAll(".case-souvenir").forEach((caseEl, index) => {
+        const ouvert = caseEl.classList.contains("ouvert");
+        caseEl.querySelector(".cadenas").textContent = ouvert ? "🔓" : "🔒";
+        caseEl.querySelector("span:last-child").textContent =
+            ouvert ? "Secret découvert" : `Secret n°${index + 1}`;
+    });
+}
+
+let souvenirActuel = 0;
+
+function ouvrirSouvenir(index) {
+    souvenirActuel = index;
+    afficherCarteSouvenir();
+    document.getElementById("voileSouvenir").hidden = false;
+}
+
+function afficherCarteSouvenir() {
+    const souvenir = souvenirsSecrets[souvenirActuel];
+
+    document.getElementById("numeroSecret").textContent =
+        `UN SECRET POUR NOUS · ${souvenirActuel + 1}/6`;
+    document.getElementById("titreSecret").textContent = souvenir.titre;
+    document.getElementById("texteSecret").textContent = souvenir.texte;
+
+    const boutonSuivant = document.querySelector(".bouton-suivant");
+    boutonSuivant.textContent =
+        souvenirActuel === souvenirsSecrets.length - 1
+            ? "Revoir le premier ♡"
+            : "Le suivant ♡";
+
+    const caseEl = document.querySelectorAll(".case-souvenir")[souvenirActuel];
+    caseEl.classList.add("ouvert");
+    caseEl.querySelector(".cadenas").textContent = "🔓";
+    caseEl.querySelector("span:last-child").textContent = "Secret découvert";
+}
+
+function souvenirSuivant() {
+    souvenirActuel = (souvenirActuel + 1) % souvenirsSecrets.length;
+    afficherCarteSouvenir();
+}
+
+function fermerCarteSouvenir() {
+    document.getElementById("voileSouvenir").hidden = true;
+    afficherGrilleSouvenirs();
+}
+
+function fermerSouvenirs() {
+    document.getElementById("voileSouvenir").hidden = true;
+    document.getElementById("zoneSouvenirs").hidden = true;
+}
+
+function ouvrirFenetreSouvenirs() {
+    document.getElementById("zoneSouvenirs").hidden = false;
+    document.getElementById("voileSouvenir").hidden = true;
+    afficherGrilleSouvenirs();
+}
+
+
+/* ===== LES DEUX SURPRISES SECRÈTES ===== */
+
+const petitsMots = [
+    "Tu illimunes ma vie Garance, sache-le. ♡",
+    "Tu es l'une de mes plus jolies chances.",
+    "Avec toi, même les petits moments deviennent précieux.",
+    "Je t'admire tout le temps, même quand tu ne t'en rends pas compte.",
+    "Si je devais choisir encore, je te choisirais toi.",
+    "Tu es mon endroit préféré, peu importe où l'on se trouve.",
+    "Merci d'être toi mon coeur, tout simplement.",
+    "J'ai envie de créer encore tant de souvenirs avec toi.",
+    "Je te le dit honnêtement, je te trouve fascinante, vraiment.",
+    "Avec toi tout parait plus simple, plus calme, plus doux...",
+    "J'aime les petites choses qui n'appartiennent qu'à nous.",
+    "Ma journée préféré, c'est celle où tu es là."
+];
+
+const messagesEtoiles = [
+    {
+        titre: "Ma plus belle rencontre",
+        texte: "Parmi toutes les personnes avec qui j'aurais pu vivre ça, je suis tellement heureux que ce soit toi."
+    },
+    {
+        titre: "Mon endroit sûr",
+        texte: "J'espère que tu sauras toujours que tu peux trouver auprès de moi une épaule, du soutien, de l'écoute et surtout beaucoup d'amour."
+    },
+    {
+        titre: "Notre histoire",
+        texte: "Je ne sais pas encore tout ce qui nous attend, mais je suis impatient de découvrir la suite avec toi."
+    },
+    {
+        titre: "Ce que je vois en toi",
+        texte: "J'aimerais tellement que tu puisses te voir à travers mes yeux, même un court instant, juste pour comprendre à quel point tu m'es précieuse."
+    },
+    {
+        titre: "Une promesse",
+        texte: "Je veux continuer à apprendre à te connaître, à rire avec toi et à prendre soin de ce qu'on en train de construire."
+    },
+    {
+        titre: "Juste une vérité",
+        texte: "Même au milieu de tous les mauvaises choses que je pourrais te dire, il y en a une qui ne changera jamais : tu comptes énormément pour moi. ♡"
+    }
+];
+
+let motsDisponibles = [];
+let bocalOuvert = false;
+
+function melangerMots(tableau) {
+    const copie = [...tableau];
+
+    for (let i = copie.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copie[i], copie[j]] = [copie[j], copie[i]];
+    }
+
+    return copie;
+}
+
+function fermerMenuSecret() {
+    document.getElementById("menuSecret").hidden = true;
+}
+
+function retourMenuSecret() {
+    document.getElementById("fenetreBocal").hidden = true;
+    document.getElementById("universEtoiles").hidden = true;
+    document.getElementById("voileEtoile").hidden = true;
+    document.getElementById("menuSecret").hidden = false;
+}
+
+function ouvrirBocal() {
+    fermerMenuSecret();
+
+    document.getElementById("fenetreBocal").hidden = false;
+
+    // Chaque nouvelle visite recommence avec un ordre aléatoire.
+    motsDisponibles = melangerMots(petitsMots);
+    bocalOuvert = false;
+
+    const bocal = document.getElementById("dessinBocal");
+    bocal.classList.remove("ouvert");
+
+    document.getElementById("instructionBocal").textContent =
+        "Appuie sur le bocal pour l'ouvrir";
+
+    document.getElementById("resultatBocal").hidden = true;
+    document.getElementById("boutonPiocher").hidden = true;
+}
+
+function ouvrirLeBocal() {
+    if (bocalOuvert) return;
+
+    bocalOuvert = true;
+
+    document.getElementById("dessinBocal").classList.add("ouvert");
+    document.getElementById("instructionBocal").textContent =
+        "Le bocal est ouvert… pioche ton premier mot ♡";
+
+    document.getElementById("resultatBocal").hidden = false;
+    document.getElementById("boutonPiocher").hidden = false;
+
+    piocherUnMot();
+}
+
+function piocherUnMot() {
+    if (!bocalOuvert) {
+        ouvrirLeBocal();
+        return;
+    }
+
+    // Une fois les 12 mots découverts, on remélange la collection.
+    if (motsDisponibles.length === 0) {
+        motsDisponibles = melangerMots(petitsMots);
+        document.getElementById("instructionBocal").textContent =
+            "Tous les mots ont été découverts ! Voici une nouvelle tournée ♡";
+    }
+
+    const mot = motsDisponibles.pop();
+
+    const affichage = document.getElementById("motPioche");
+    affichage.style.animation = "none";
+    void affichage.offsetWidth;
+    affichage.style.animation = "apparitionSouvenirs .3s ease";
+    affichage.textContent = mot;
+}
+
+function ouvrirUniversEtoiles() {
+    fermerMenuSecret();
+    document.getElementById("universEtoiles").hidden = false;
+    document.getElementById("voileEtoile").hidden = true;
+}
+
+function ouvrirEtoile(index) {
+    const message = messagesEtoiles[index];
+    if (!message) return;
+
+    document.getElementById("numeroParcheminEtoile").textContent =
+        `UN MOT SOUS LES ÉTOILES · ${index + 1}/6`;
+
+    document.getElementById("titreParcheminEtoile").textContent =
+        message.titre;
+
+    document.getElementById("texteParcheminEtoile").textContent =
+        message.texte;
+
+    document.getElementById("voileEtoile").hidden = false;
+}
+
+function fermerEtoile() {
+    document.getElementById("voileEtoile").hidden = true;
+}
+
+function fermerBocal() {
+    document.getElementById("fenetreBocal").hidden = true;
+}
+
+function fermerUniversEtoiles() {
+    document.getElementById("voileEtoile").hidden = true;
+    document.getElementById("universEtoiles").hidden = true;
+}
+
+// Fermer les fenêtres avec la touche Échap
+document.addEventListener("keydown", function(event) {
+    if (event.key !== "Escape") return;
+
+    const voileEtoile = document.getElementById("voileEtoile");
+
+    if (!voileEtoile.hidden) {
+        fermerEtoile();
+    } else if (!document.getElementById("universEtoiles").hidden) {
+        fermerUniversEtoiles();
+    } else if (!document.getElementById("fenetreBocal").hidden) {
+        fermerBocal();
+    } else if (!document.getElementById("menuSecret").hidden) {
+        fermerMenuSecret();
+    }
+});
+
+
+/* ===== LA SUITE DE NOTRE HISTOIRE ===== */
+
+function fermerFenetreAvenir() {
+    document.getElementById("fenetreAvenir").hidden = true;
+}
+
+function entrerDansLeFutur() {
+    fermerFenetreAvenir();
+
+    const page = document.getElementById("pageFutur");
+    page.hidden = false;
+
+    creerEtoilesFutur();
+}
+
+function creerEtoilesFutur() {
+    const ciel = document.getElementById("etoilesFutur");
+    ciel.innerHTML = "";
+
+    for (let i = 0; i < 100; i++) {
+        const etoile = document.createElement("span");
+        etoile.className = "etoile-futur";
+
+        etoile.style.left = Math.random() * 100 + "%";
+        etoile.style.top = Math.random() * 100 + "%";
+        etoile.style.setProperty(
+            "--duree",
+            (1.5 + Math.random() * 4) + "s"
+        );
+        etoile.style.setProperty(
+            "--delai",
+            (-Math.random() * 5) + "s"
+        );
+
+        ciel.appendChild(etoile);
+    }
+}
+
+
+
+function lancerTunnelFutur() {
+    const boite = document.querySelector(".boite-lumineuse");
+    const invitation = document.querySelector(".invitation-futur");
+    const tunnel = document.getElementById("tunnelFutur");
+    const flash = document.getElementById("flashFutur");
+    const flashEntree = document.getElementById("flashEntreeFutur");
+    const message = document.getElementById("messageFutur");
+
+    boite.disabled = true;
+    boite.classList.add("zoom-final");
+    invitation.hidden = true;
+    message.hidden = true;
+    message.classList.remove("visible");
+
+    // Le carré blanc grossit et déclenche le premier flash.
+    window.setTimeout(() => {
+        flashEntree.classList.remove("actif");
+        void flashEntree.offsetWidth;
+        flashEntree.classList.add("actif");
+    }, 650);
+
+    // Le tunnel apparaît sous le flash.
+    window.setTimeout(() => {
+        creerFilsLumiere();
+        tunnel.classList.add("actif");
+    }, 950);
+
+    // Accélération progressive, sans changement brutal.
+    window.setTimeout(() => {
+        tunnel.classList.add("acceleration");
+    }, 1300);
+
+      
+let taillePoint = 1;
+let vitessePoint = 0.025;
+
+const intervallePoint = window.setInterval(() => {
+    taillePoint += vitessePoint;
+    vitessePoint *= 1.012;
+
+    tunnel.style.setProperty("--point-taille", taillePoint);
+
+    if (taillePoint >= 5) {
+        window.clearInterval(intervallePoint);
+    }
+}, 50);
+
+
+    // Le point central grossit pour nous aspirer hors du tunnel.
+    window.setTimeout(() => {
+    tunnel.classList.add("point-final");
+    }, 3900);
+
+    // Flash blanc à la sortie.
+    window.setTimeout(() => {
+        flash.classList.remove("actif");
+        void flash.offsetWidth;
+        flash.classList.add("actif");
+    }, 4750);
+
+    
+window.setTimeout(() => {
+    const page = document.getElementById("pageFutur");
+
+    page.classList.add("sortie-futur");
+    tunnel.classList.remove("actif", "acceleration");
+
+    // Le cercle finit de recouvrir l'écran avant de disparaître.
+    window.setTimeout(() => {
+        tunnel.classList.remove("point-final");
+        message.hidden = false;
+
+        requestAnimationFrame(() => {
+            message.classList.add("visible");
+        });
+
+        page.classList.remove("sortie-futur");
+    }, 500);
+}, 5100);
+}
+
+function creerFilsLumiere() {
+    const tunnel = document.getElementById("tunnelFutur");
+
+    // Évite d'empiler les fils à chaque tentative
+    tunnel.querySelectorAll(".fil-lumiere").forEach(fil => fil.remove());
+
+    const couleurs = [
+        "#ffffff",
+        "#e8caff",
+        "#c58bff",
+        "#8ceaff",
+        "#ffbce7"
+    ];
+
+    for (let i = 0; i < 150; i++) {
+        const fil = document.createElement("span");
+        fil.className = "fil-lumiere";
+
+        const angle = Math.random() * 360;
+        const longueur = 80 + Math.random() * 220;
+        const distance = Math.max(window.innerWidth, window.innerHeight) * 1.25;
+        const vitesse = 0.7 + Math.random() * 1.4;
+        const epaisseur = 1 + Math.random() * 2.5;
+        const couleur = couleurs[Math.floor(Math.random() * couleurs.length)];
+
+        fil.style.setProperty("--angle", angle + "deg");
+        fil.style.setProperty("--longueur", longueur + "px");
+        fil.style.setProperty("--distance", distance + "px");
+        fil.style.setProperty("--vitesse", vitesse + "s");
+        fil.style.setProperty("--epaisseur", epaisseur + "px");
+        fil.style.setProperty("--couleur", couleur);
+        fil.style.setProperty("--delai", (-Math.random() * vitesse) + "s");
+
+        tunnel.appendChild(fil);
+    }
+}
+
+
+function recommencerFutur() {
+    document.getElementById("tunnelFutur").classList.remove(
+    "actif", "acceleration", "point-final"
+);
+document.getElementById("messageFutur").hidden = true;
+document.getElementById("messageFutur").classList.remove("visible");
+document.getElementById("flashFutur").classList.remove("actif");
+document.getElementById("flashEntreeFutur").classList.remove("actif");
+    const page = document.getElementById("pageFutur");
+
+    page.hidden = true;
+    document.querySelector(".boite-lumineuse").hidden = false;
+    document.querySelector(".invitation-futur").hidden = false;
+    document.getElementById("tunnelFutur").classList.remove("actif");
+    document.getElementById("flashFutur").classList.remove("actif");
+    document.getElementById("messageFutur").classList.remove("visible");
+    document.querySelector(".boite-lumineuse").disabled = false;
+    document.querySelector(".boite-lumineuse").classList.remove("zoom-final");
+    document.getElementById("flashEntreeFutur").classList.remove("actif"); 
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        fermerFenetreAvenir();
+    }
+});
+
+    </script>
+
+
+<div id="parchemin" class="fond-parchemin"
+     aria-hidden="true"
+     onclick="fermerParcheminExterieur(event)">
+
+    <div class="lettre-parchemin" role="dialog"
+         aria-modal="true" aria-labelledby="titreParchemin">
+
+        <button class="fermer-parchemin" type="button"
+                onclick="fermerParchemin()"
+                aria-label="Fermer la lettre">×</button>
+
+        <div class="deco-parchemin">✧ ❦ ✧</div>
+
+        <h2 id="titreParchemin">Un mot pour toi</h2>
+
+        <div id="texteParchemin" class="texte-parchemin">
+            Sache que si je devais recommencer une histoire,
+            je te choisirais encore. Et encore. Et encore. 
+            Parce que c'est toi Garance, c'est toi, ça a toujours été toi et ce sera toujours toi.💗
+        </div>
+
+        <div class="signature-parchemin">Avec tout mon amour ♡</div>
+    </div>
+</div>
+</body>
+</html>

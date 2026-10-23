@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Une histoire à nous</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f8eff1;
+            color: #624653;
+        }
+
+        .introduction {
+            text-align: center;
+            padding: 30px;
+            opacity: 0;
+            animation: apparition 2s ease forwards;
+        }
+
+        .petit-texte {
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            color: #a27c8b;
+        }
+
+        h1 {
+            font-weight: normal;
+            font-size: clamp(30px, 6vw, 48px);
+            margin: 0 0 18px;
+        }
+
+        .description {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #886b77;
+            margin-bottom: 38px;
+        }
+
+        #commencer {
+            border: 1px solid #c9a3b1;
+            border-radius: 40px;
+            padding: 16px 30px;
+            background: #fffafb;
+            color: #765363;
+            font-family: inherit;
+            font-size: 16px;
+            cursor: pointer;
+            transition:
+                background 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        #commencer:hover {
+            background: #e9d1d9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px #b58b9b35;
+        }
+
+        #commencer:disabled {
+            cursor: default;
+        }
+
+        #lumiere {
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            pointer-events: none;
+            background: white;
+            opacity: 0;
+        }
+
+        body.transition .introduction {
+            filter: blur(8px);
+            transform: scale(1.04);
+            opacity: 0;
+            transition: opacity 1s ease, filter 1s ease, transform 1s ease;
+        }
+
+        body.transition #lumiere {
+            animation: fonduLumineux 1.4s ease-in forwards;
+        }
+
+        @keyframes apparition {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fonduLumineux {
+            0% {
+                opacity: 0;
+                backdrop-filter: blur(0);
+            }
+            45% {
+                opacity: 0.75;
+                backdrop-filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                backdrop-filter: blur(12px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .introduction {
+                animation-duration: 0.01ms;
+            }
+
+            body.transition .introduction {
+                transition-duration: 0.01ms;
+            }
+
+            body.transition #lumiere {
+                animation-duration: 0.01ms;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="introduction">
+        <div class="petit-texte">Une petite porte vers nous</div>
+
+        <h1>Notre histoire commence ici</h1>
+
+        <p class="description">
+            J'ai préparé quelque chose pour toi…<br>
+            Prends un instant, et laisse-toi guider.
+        </p>
+
+        <button id="commencer">
+            Commencer notre histoire ♡
+        </button>
+    </main>
+
+    <div id="lumiere"></div>
+
+    
+
+
+<script>
+    const bouton = document.getElementById("commencer");
+
+    bouton.addEventListener("click", () => {
+        // Demander au lecteur commun de démarrer la musique.
+        window.parent.postMessage("demarrer-musique", "*");
+
+        bouton.disabled = true;
+
+        // Garder la transition visuelle existante.
+        document.body.classList.add("transition");
+
+        // Afficher index.html après la transition.
+        setTimeout(() => {
+            window.parent.postMessage("page-index", "*");
+        }, 1200);
+    });
+</script>
+
+
+    <script>
+        const sonClic = new Audio("./audio/clic.mp3");
+        sonClic.preload = "auto";
+        sonClic.volume = 0.3;
+
+        document.querySelectorAll("button").forEach((bouton) => {
+            bouton.addEventListener("click", () => {
+                const son = sonClic.cloneNode();
+                son.volume = 0.3;
+                son.play().catch(() => {});
+            });
+        });
+    </script>
+    <script>
+    document.addEventListener("pointerdown", () => {
+        window.parent.postMessage("demarrer-musique", "*");
+    }, { once: true });
+</script>
+</body>
+</html>

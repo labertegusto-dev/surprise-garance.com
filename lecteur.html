@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre histoire</title>
+    <style>
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <audio id="musique" src="audio/musique%20d%C3%A9but.mp3"
+           loop preload="auto"></audio>
+    <audio id="musiqueFinale" src="audio/musique%20finale.mp3"
+           loop preload="auto"></audio>
+
+    <iframe id="page" src="accueil.html" title="Notre histoire"></iframe>
+
+    <script>
+        const musique = document.getElementById("musique");
+        const musiqueFinale = document.getElementById("musiqueFinale");
+        const page = document.getElementById("page");
+// Essayer de démarrer la musique à l'ouverture du lecteur.
+window.addEventListener("load", () => {
+    musique.play().catch(() => {
+        console.log("Le navigateur bloque la lecture automatique.");
+    });
+});
+        musique.volume = 0.07;
+        musiqueFinale.volume = 0;
+
+        let transitionFinaleEnCours = false;
+
+        function changerPage(nom) {
+            page.src = nom + ".html";
+        }
+
+        function lancerMusique() {
+            if (!transitionFinaleEnCours && musique.paused) {
+                musique.play().catch(() => {});
+            }
+        }
+
+        
+
+
+function fonduVersFinale() {
+    if (transitionFinaleEnCours) return;
+    transitionFinaleEnCours = true;
+
+    const duree = 5000;       // Fondu de 7 secondes
+    const volumeDebut = 0.07;
+    const volumeFinal = 0.045; // Finale plus douce
+    const depart = performance.now();
+
+    musiqueFinale.volume = 0;
+
+    musiqueFinale.play().then(() => {
+        function fondu(maintenant) {
+            const progression = Math.min((maintenant - depart) / duree, 1);
+
+            musique.volume = volumeDebut * (1 - progression);
+            musiqueFinale.volume = volumeFinal * progression;
+
+            if (progression < 1) {
+                requestAnimationFrame(fondu);
+            } else {
+                musique.pause();
+                musique.currentTime = 0;
+                transitionFinaleEnCours = false;
+            }
+        }
+
+        requestAnimationFrame(fondu);
+    }).catch(() => {
+        transitionFinaleEnCours = false;
+    });
+}
+
+
+        window.addEventListener("message", (event) => {
+            if (event.data === "demarrer-musique") {
+                lancerMusique();
+            }
+
+            if (event.data === "page-index") {
+                changerPage("index");
+            }
+
+            if (event.data === "page-surprise") {
+                changerPage("surprise");
+            }
+
+            if (event.data === "page-finale") {
+                changerPage("finale");
+            }
+
+            if (event.data === "fondu-vers-finale") {
+                fonduVersFinale();
+            }
+        });
+    </script>
+</body>
+</html>

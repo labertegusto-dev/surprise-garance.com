@@ -1,0 +1,574 @@
+
+            <!DOCTYPE html>
+            <html lang="fr">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Une petite surprise ❤️</title>
+
+                <style>
+                    * {
+                        box-sizing: border-box;
+                    }
+
+                    body {
+                        margin: 0;
+                        min-height: 100vh;
+                        overflow: hidden;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: relative;
+                        background: #fff5f7;
+                        font-family: 'Montserrat', sans-serif;
+                    }
+
+                    /* Les petits points dans le fond */
+                    .point {
+                        position: absolute;
+                        width: 3px;
+                        height: 3px;
+                        border-radius: 50%;
+                        background: #302725;
+                        pointer-events: none;
+                        animation: scintiller 4s ease-in-out infinite;
+                    }
+
+                    @keyframes scintiller {
+                        0%, 100% {
+                            opacity: 0;
+                            transform: scale(0.6);
+                        }
+
+                        50% {
+                            opacity: 0.55;
+                            transform: scale(1);
+                        }
+                    }
+
+                    /* Le bouton principal */
+                    #boutonSurprise {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        padding: 16px 30px;
+                        border: 1px solid #C58B98;
+                        border-radius: 40px;
+                        background: #FAF3F0;
+                        color: #80535D;
+                        font-size: 15px;
+                        letter-spacing: 1px;
+                        cursor: pointer;
+                        z-index: 2;
+                        transition:
+                            background 0.3s ease,
+                            box-shadow 0.3s ease;
+                    }
+
+                    #boutonSurprise:hover {
+                        background: #FFFFFF;
+                        box-shadow: 0 0 18px #C58B9840;
+                    }
+                    
+            /* Le bouton s'illumine lorsqu'on le maintient */
+            #boutonSurprise.bouton-maintenu {
+                animation:
+                    tremblement 0.16s ease-in-out infinite,
+                    lueur 0.8s ease-in-out infinite alternate;
+                overflow: visible;
+            }
+
+            /* Les fissures lumineuses */
+            #boutonSurprise.bouton-maintenu::before {
+                content: "";
+                position: absolute;
+                inset: 3px;
+                border-radius: inherit;
+                pointer-events: none;
+                opacity: 1;
+                
+            background:
+                linear-gradient(35deg,
+                    transparent 46%,
+                    #FFFFFF 47%,
+                    #FFFFFF 48%,
+                    transparent 49%),
+                linear-gradient(125deg,
+                    transparent 55%,
+                    #D98FA0 56%,
+                    #FFFFFF 57%,
+                    transparent 58%),
+                linear-gradient(80deg,
+                    transparent 25%,
+                    #FFFFFF 26%,
+                    #D98FA0 27%,
+                    transparent 28%),
+                linear-gradient(150deg,
+                    transparent 35%,
+                    #FFFFFF 36%,
+                    #FFFFFF 36.5%,
+                    transparent 37%),
+                linear-gradient(15deg,
+                    transparent 65%,
+                    #D98FA0 66%,
+                    #FFFFFF 67%,
+                    transparent 68%),
+                linear-gradient(100deg,
+                    transparent 15%,
+                    #FFFFFF 16%,
+                    #D98FA0 17%,
+                    transparent 18%),
+                linear-gradient(170deg,
+                    transparent 75%,
+                    #FFFFFF 76%,
+                    #FFFFFF 77%,
+                    transparent 78%);
+
+                animation: scintillerFissures 0.7s ease-in-out infinite alternate;
+            }
+
+            @keyframes tremblement {
+                0%   { transform: translate(-50%, -50%) rotate(-1deg); }
+                25%  { transform: translate(-49%, -51%) rotate(1deg); }
+                50%  { transform: translate(-51%, -50%) rotate(-0.5deg); }
+                75%  { transform: translate(-50%, -49%) rotate(1deg); }
+                100% { transform: translate(-50%, -50%) rotate(-1deg); }
+            }
+
+
+            @keyframes lueur {
+                from {
+                    box-shadow:
+                        0 0 15px #D98FA0,
+                        0 0 30px #F2A7BA,
+                        0 0 45px #F2A7BA80;
+                    filter: brightness(1.1);
+                }
+
+                to {
+                    box-shadow:
+                        0 0 25px #FFFFFF,
+                        0 0 55px #F2A7BA,
+                        0 0 85px #D98FA0,
+                        0 0 120px #FFFFFF80;
+                    filter: brightness(1.9);
+                }
+            }
+
+
+            @keyframes scintillerFissures {
+                from { opacity: 0.35; }
+                to   { opacity: 1; }
+            }
+
+            #coeurCanvas {
+                position: fixed;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            /* Le flash blanc qui envahit toute la page */
+            #flashBlanc {
+                position: fixed;
+                inset: 0;
+                background: #FFFFFF;
+                opacity: 0;
+                pointer-events: none;
+                z-index: 5;
+            }
+
+            #flashBlanc.flash-actif {
+                animation: flashFinal 2.8s ease-in forwards;
+            }
+
+
+
+            @keyframes flashFinal {
+                0% {
+                    opacity: 0;
+                }
+
+                30% {
+                    opacity: 0.03;
+                }
+
+                50% {
+                    opacity: 0.10;
+                }
+
+                65% {
+                    opacity: 0.25;
+                }
+
+                78% {
+                    opacity: 0.55;
+                }
+
+                90% {
+                    opacity: 0.88;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+
+            /* Le bouton grossit, tourne et disparaît */
+            #boutonSurprise.bouton-explosion {
+                z-index: 6;
+                animation: explosionBouton 2.8s ease-in forwards;
+            }
+
+
+            @keyframes explosionBouton {
+                0% {
+                    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                    filter: brightness(2);
+                    opacity: 1;
+                }
+
+                20% {
+                    transform: translate(-50%, -50%) scale(2) rotate(45deg);
+                    filter: brightness(4);
+                    opacity: 1;
+                }
+
+                45% {
+                    transform: translate(-50%, -50%) scale(5) rotate(150deg);
+                    filter: brightness(8);
+                    opacity: 1;
+                }
+
+                70% {
+                    transform: translate(-50%, -50%) scale(12) rotate(300deg);
+                    filter: brightness(16);
+                    opacity: 0.9;
+                }
+
+                100% {
+                    transform: translate(-50%, -50%) scale(25) rotate(360deg);
+                    filter: brightness(30);
+                    opacity: 0;
+                }
+            }
+
+            /* Le cœur zoome au moment de l'explosion */
+            #coeurCanvas.coeur-zoom {
+                transform-origin: center center;
+                animation: zoomCoeur 2.8s ease-in forwards;
+            }
+
+
+            @keyframes zoomCoeur {
+                0% {
+                    transform: scale(1);
+                    filter: brightness(1);
+                }
+
+                35% {
+                    transform: scale(1.5);
+                    filter: brightness(1.5);
+                }
+
+                65% {
+                    transform: scale(3);
+                    filter: brightness(2.5);
+                }
+
+                85% {
+                    transform: scale(6);
+                    filter: brightness(4);
+                }
+
+                100% {
+                    transform: scale(12);
+                    filter: brightness(8);
+                }
+            }
+
+            #voile-entree {
+                position: fixed;
+                inset: 0;
+                z-index: 10000;
+                background: #fff0f4;
+                opacity: 1;
+                pointer-events: none;
+                animation: apparitionPage 1.4s ease-in-out forwards;
+            }
+
+            @keyframes apparitionPage {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+
+                </style>
+            </head>
+
+            <body>
+                <div id="voile-entree" aria-hidden="true"></div>
+                <div id="flashBlanc"></div>
+            <canvas id="coeurCanvas"></canvas>
+                <button id="boutonSurprise">
+                    Clique ici ❤️
+                </button>
+
+                <script>
+                    // Création des petits points
+                    for (let i = 0; i < 200; i++) {
+                        const point = document.createElement("div");
+
+                        point.classList.add("point");
+
+                        point.style.left = Math.random() * 100 + "%";
+                        point.style.top = Math.random() * 100 + "%";
+
+                        point.style.animationDelay =
+                            Math.random() * 4 + "s";
+
+                        point.style.animationDuration =
+                            (3 + Math.random() * 4) + "s";
+
+                        document.body.appendChild(point);
+                    }
+                    
+            const bouton = document.querySelector("#boutonSurprise");
+    const sonClic = new Audio("./audio/clic.mp3");
+    sonClic.preload = "auto";
+    sonClic.volume = 0.05;
+
+    function jouerSonClic() {
+        const son = sonClic.cloneNode();
+        son.volume = 0.05;
+        son.play().catch(() => {});
+    }   
+            const messages = [
+                "Bah ? Fais un effort...",
+                "Bien tenté mais raté ! 😘",
+                "Dommage t'étais pas loin...",
+                "Evite de pleurer stp 😉",
+                "C'est relou hein ?",
+                "Bon… d'accord, j'arrête ❤️"
+            ];
+
+            let tentatives = 0;
+            let boutonFixe = false;
+            let progressionCoeur = 0;
+            let maintienEnCours = false;
+            let animationCoeur = null;
+            let explosionLancee = false;
+            
+            bouton.addEventListener("pointerdown", (event) => {
+                jouerSonClic();    
+                if (!boutonFixe) {
+                    event.preventDefault();
+
+                    tentatives++;
+
+                    if (tentatives < messages.length) {
+                        bouton.textContent = messages[tentatives - 1];
+
+                        const marge = 35;
+                        const largeur = bouton.offsetWidth;
+                        const hauteur = bouton.offsetHeight;
+
+                        const x = marge + Math.random() *
+                            (window.innerWidth - largeur - marge * 2);
+
+                        const y = marge + Math.random() *
+                            (window.innerHeight - hauteur - marge * 2);
+
+                        bouton.style.left = x + "px";
+                        bouton.style.top = y + "px";
+                        bouton.style.transform = "translate(0, 0)";
+                    } else {
+                        boutonFixe = true;
+                        bouton.textContent = "Bon… d'accord, j'arrête ❤️";
+
+                        bouton.style.left = "50%";
+                        bouton.style.top = "50%";
+                        bouton.style.transform = "translate(-50%, -50%)";
+                    }
+
+                    return;
+                }
+
+                // Le bouton est revenu au centre : on commence le cœur
+    // Le bouton est revenu au centre : on commence le cœur
+event.preventDefault();
+
+maintienEnCours = true;
+bouton.classList.add("bouton-maintenu");
+
+if (animationCoeur) {
+    cancelAnimationFrame(animationCoeur);
+}
+
+animerCoeur();
+});
+
+
+    if (animationCoeur) {
+        cancelAnimationFrame(animationCoeur);
+    }
+
+    animerCoeur();
+
+            function arreterMaintien() {
+        maintienEnCours = false;
+        bouton.classList.remove("bouton-maintenu");
+
+        if (animationCoeur) {
+            cancelAnimationFrame(animationCoeur);
+            animationCoeur = null;
+        }
+
+    }
+
+            bouton.addEventListener("pointerup", arreterMaintien);
+            bouton.addEventListener("pointercancel", arreterMaintien);
+            window.addEventListener("pointerup", arreterMaintien);
+            window.addEventListener("blur", arreterMaintien);
+
+
+            const canvas = document.querySelector("#coeurCanvas");
+            const ctx = canvas.getContext("2d");
+
+            
+            function ajusterCanvas() {
+                const ratio = window.devicePixelRatio || 1;
+
+                canvas.width = window.innerWidth * ratio;
+                canvas.height = window.innerHeight * ratio;
+
+                ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+            }
+
+            ajusterCanvas();
+            window.addEventListener("resize", ajusterCanvas);
+
+
+            function dessinerCoeur(progression) {
+                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+                const largeur = 18;
+                const hauteur = 18;
+                const centreX = window.innerWidth / 2;
+                const centreY = window.innerHeight / 2;
+
+                // Les deux côtés partent du haut et descendent ensemble
+                function pointCoeur(t) {
+                    const x = 16 * Math.pow(Math.sin(t), 3);
+
+                    const y =
+                        13 * Math.cos(t)
+                        - 5 * Math.cos(2 * t)
+                        - 2 * Math.cos(3 * t)
+                        - Math.cos(4 * t);
+
+                    return {
+                        x: centreX + x * largeur,
+                        y: centreY - y * hauteur
+                    };
+                }
+
+                const nombrePoints = 200;
+                const pointsDroite = [];
+                const pointsGauche = [];
+
+                for (let i = 0; i <= nombrePoints; i++) {
+                    const t = (i / nombrePoints) * Math.PI;
+
+                    pointsDroite.push(pointCoeur(t));
+                    pointsGauche.push(pointCoeur(2 * Math.PI - t));
+                }
+
+                const nombreTrace = Math.floor(progression * nombrePoints);
+
+                ctx.beginPath();
+
+                // Côté droit
+                ctx.moveTo(pointsDroite[0].x, pointsDroite[0].y);
+
+                for (let i = 1; i <= nombreTrace; i++) {
+                    ctx.lineTo(pointsDroite[i].x, pointsDroite[i].y);
+                }
+
+                // Côté gauche : dessiné simultanément
+                ctx.moveTo(pointsGauche[0].x, pointsGauche[0].y);
+
+                for (let i = 1; i <= nombreTrace; i++) {
+                    ctx.lineTo(pointsGauche[i].x, pointsGauche[i].y);
+                }
+
+                ctx.strokeStyle = "#D98FA0";
+                ctx.lineWidth = 2.5;
+                ctx.lineCap = "round";
+                ctx.shadowColor = "#F2A7BA";
+                ctx.shadowBlur = 14;
+                ctx.stroke();
+
+                ctx.shadowBlur = 0;
+            }   
+
+
+
+
+            function lancerExplosion() {
+                if (explosionLancee) return;
+
+                explosionLancee = true;
+                maintienEnCours = false;
+                // Laisser le son aller jusqu'à sa fin pendant l'explosion
+            
+                bouton.classList.remove("bouton-maintenu");
+                bouton.classList.add("bouton-explosion");
+                canvas.classList.add("coeur-zoom");
+
+                const flash = document.querySelector("#flashBlanc");
+                flash.classList.add("flash-actif");
+                window.parent.postMessage("fondu-vers-finale", "*");
+                // Préparer la finale sans redémarrer la musique
+                setTimeout(() => {
+                    window.parent.postMessage("page-finale", "*");
+                }, 2800);
+            }
+
+
+
+            function animerCoeur() {
+                if (!maintienEnCours) return;
+
+                progressionCoeur += 1 / 900;
+
+                if (progressionCoeur > 1) {
+                    progressionCoeur = 1;
+                }
+
+                dessinerCoeur(progressionCoeur);
+
+            if (progressionCoeur < 1) {
+                animationCoeur = requestAnimationFrame(animerCoeur);
+            } else {
+                lancerExplosion();
+            }
+            }
+
+                </script>
+
+            <section id="contenuFinale" hidden>
+                <!-- Copie ici le contenu visuel de finale.html :
+                    les étoiles, les cœurs, les textes et les animations. -->
+            </section>
+            
+            </body>
+            </html>
