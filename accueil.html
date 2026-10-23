@@ -1,197 +1,298 @@
-
 <!DOCTYPE html>
-<html lang="fr">
+<html  lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Une histoire à nous</title>
+    <meta name=""viewport" content=""width=device-width, initial-scale="1.0">
+    <title>Ma surprise romantique</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style> 
+@import url('https://');@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap');
+body  {
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: Georgia, "Times New Roman", serif;
-            background: #f8eff1;
-            color: #624653;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f1e5e3;
+    font-family: Garamond ;
+    text-align: center;
+    min-height: 100vh;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+    color: #704653;
+ }
 
-        .introduction {
-            text-align: center;
-            padding: 30px;
-            opacity: 0;
-            animation: apparition 2s ease forwards;
-        }
+h1 {
+    font-size: 60px;
+    font-family: 'Cormorant Garamond', serif ;
+    font-weight: 600;
+    margin: 0 0 5px;
+}
 
-        .petit-texte {
-            font-size: 13px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            color: #a27c8b;
-        }
+p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    margin: 0 0 24px;
+}
 
-        h1 {
-            font-weight: normal;
-            font-size: clamp(30px, 6vw, 48px);
-            margin: 0 0 18px;
-        }
+button { 
+    background-color: #d88fa5;
+    color: white;
+    font-family: 'Montserrat', sans-serif ;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 25px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 28px rgba(112, 70, 83,  0.45);
+}
 
-        .description {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #886b77;
-            margin-bottom: 38px;
-        }
+#voile-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #fffdfd;
+    opacity: 1;
+    pointer-events: none;
+    animation: ouverturePage 2.3s ease-out forwards;
+}
 
-        #commencer {
-            border: 1px solid #c9a3b1;
-            border-radius: 40px;
-            padding: 16px 30px;
-            background: #fffafb;
-            color: #765363;
-            font-family: inherit;
-            font-size: 16px;
-            cursor: pointer;
-            transition:
-                background 0.3s ease,
-                color 0.3s ease,
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
-        }
+@keyframes ouverturePage {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+body {
+    background-color: #fff5f7;
+}
 
-        #commencer:hover {
-            background: #e9d1d9;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px #b58b9b35;
-        }
+.fond-lumineux {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at 12% 18%,
+            rgba(255, 218, 230, 0.5),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 88% 78%,
+            rgba(238, 207, 225, 0.4),
+            transparent 38%
+        ),
+        #fff5f7;
+}
 
-        #commencer:disabled {
-            cursor: default;
-        }
+#poussiere-etoiles {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
 
-        #lumiere {
-            position: fixed;
-            inset: 0;
-            z-index: 10;
-            pointer-events: none;
-            background: white;
-            opacity: 0;
-        }
+.petite-etoile {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background: #d98da7;
+    box-shadow:
+        0 0 5px 2px rgba(217, 141, 167, 0.65),
+        0 0 12px 3px rgba(255, 210, 225, 0.7);
+    animation: scintiller 2s ease-in-out infinite alternate;
+}
 
-        body.transition .introduction {
-            filter: blur(8px);
-            transform: scale(1.04);
-            opacity: 0;
-            transition: opacity 1s ease, filter 1s ease, transform 1s ease;
-        }
+@keyframes scintiller {
+    from {
+        opacity: 0.55;
+        transform: scale(0.8);
+    }
 
-        body.transition #lumiere {
-            animation: fonduLumineux 1.4s ease-in forwards;
-        }
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+h1, p, button {
+    position: relative;
+    z-index: 2;
+}
 
-        @keyframes apparition {
-            to {
-                opacity: 1;
-            }
-        }
 
-        @keyframes fonduLumineux {
-            0% {
-                opacity: 0;
-                backdrop-filter: blur(0);
-            }
-            45% {
-                opacity: 0.75;
-                backdrop-filter: blur(5px);
-            }
-            100% {
-                opacity: 1;
-                backdrop-filter: blur(12px);
-            }
-        }
+#voile-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #fff0f4;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    backdrop-filter: blur(0px);
+    transition:
+        opacity 1.2s ease-in-out,
+        backdrop-filter 1.2s ease-in-out,
+        visibility 0s linear 1.2s;
+}
 
-        @media (prefers-reduced-motion: reduce) {
-            .introduction {
-                animation-duration: 0.01ms;
-            }
+#voile-transition.actif {
+    opacity: 1;
+    visibility: visible;
+    backdrop-filter: blur(12px);
+    transition:
+        opacity 1.2s ease-in-out,
+        backdrop-filter 1.2s ease-in-out,
+        visibility 0s;
+}
 
-            body.transition .introduction {
-                transition-duration: 0.01ms;
-            }
+body {
+    transition: filter 1.2s ease-in-out;
+}
 
-            body.transition #lumiere {
-                animation-duration: 0.01ms;
-            }
-        }
-    </style>
+body.transition-sortie {
+    filter: blur(8px);
+}
+
+
+/* Fondu lumineux vers la page suivante */
+#lumiere {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    pointer-events: none;
+    background: white;
+    opacity: 0;
+}
+
+body.transition h1,
+body.transition p,
+body.transition #monBouton {
+    filter: blur(8px);
+    transform: scale(1.04);
+    opacity: 0;
+    transition:
+        opacity 1.2s ease,
+        filter 1.2s ease,
+        transform 1.2s ease;
+}
+
+body.transition #lumiere {
+    animation: fonduLumineux 1.4s ease-in forwards;
+}
+
+@keyframes fonduLumineux {
+    0% {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+    45% {
+        opacity: 0.75;
+        backdrop-filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        backdrop-filter: blur(12px);
+    }
+}
+
+/* Fondu lumineux à l'arrivée sur index.html */
+#lumiere-entree {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    pointer-events: none;
+    background: white;
+    opacity: 1;
+    animation: lumiereEntree 1.4s ease-in forwards;
+}
+
+@keyframes lumiereEntree {
+    0% {
+        opacity: 1;
+        backdrop-filter: blur(12px);
+    }
+    100% {
+        opacity: 0;
+        backdrop-filter: blur(0);
+        visibility: hidden;
+    }
+}
+
+</style>
 </head>
-
 <body>
-    <main class="introduction">
-        <div class="petit-texte">Une petite porte vers nous</div>
+<div id="lumiere-entree" aria-hidden="true"></div>  
+<h1>J'ai quelque chose pour toi ❤️</h1>
+<p>Une petite surprise t'attend...</p>
 
-        <h1>Notre histoire commence ici</h1>
+<button id="monBouton">
+    Clique ici pour découvrir 💌
+</button>
 
-        <p class="description">
-            J'ai préparé quelque chose pour toi…<br>
-            Prends un instant, et laisse-toi guider.
-        </p>
 
-        <button id="commencer">
-            Commencer notre histoire ♡
-        </button>
-    </main>
 
-    <div id="lumiere"></div>
 
-    
+
+<div id="voile-transition"></div>
+<div id="lumiere" aria-hidden="true"></div>
+<div class="fond-lumineux" aria-hidden="true"></div>
+<div id="poussiere-etoiles" aria-hidden="true"></div>
+<script>
+
+    const poussiere = document.querySelector("#poussiere-etoiles");
+
+if (poussiere) {
+    for (let i = 0; i < 65; i++) {
+        const etoile = document.createElement("span");
+
+        etoile.className = "petite-etoile";
+
+        const taille = 3 + Math.random() * 3;
+
+        etoile.style.width = taille + "px";
+        etoile.style.height = taille + "px";
+        etoile.style.left = Math.random() * 100 + "%";
+        etoile.style.top = Math.random() * 100 + "%";
+        etoile.style.animationDelay = Math.random() * 4 + "s";
+        etoile.style.animationDuration =
+            (2.5 + Math.random() * 3) + "s";
+
+        poussiere.appendChild(etoile);
+    }
+}
+</script>
+
 
 
 <script>
-    const bouton = document.getElementById("commencer");
+const bouton = document.querySelector("#monBouton");
+const voile = document.querySelector("#voile-transition");
 
+if (bouton) {
     bouton.addEventListener("click", () => {
-        // Demander au lecteur commun de démarrer la musique.
-        window.parent.postMessage("demarrer-musique", "*");
-
         bouton.disabled = true;
 
-        // Garder la transition visuelle existante.
+        const son = new Audio("./audio/clic.mp3");
+        son.volume = 0.08;
+        son.play().catch(() => {});
+
         document.body.classList.add("transition");
 
-        // Afficher index.html après la transition.
         setTimeout(() => {
-            window.parent.postMessage("page-index", "*");
+            window.parent.postMessage("page-surprise", "*");
         }, 1200);
     });
+}
 </script>
 
 
-    <script>
-        const sonClic = new Audio("./audio/clic.mp3");
-        sonClic.preload = "auto";
-        sonClic.volume = 0.3;
-
-        document.querySelectorAll("button").forEach((bouton) => {
-            bouton.addEventListener("click", () => {
-                const son = sonClic.cloneNode();
-                son.volume = 0.3;
-                son.play().catch(() => {});
-            });
-        });
-    </script>
-    <script>
-    document.addEventListener("pointerdown", () => {
-        window.parent.postMessage("demarrer-musique", "*");
-    }, { once: true });
-</script>
 </body>
 </html>
