@@ -2293,13 +2293,13 @@
  <div class="album-defilant">
     <button class="fleche-album gauche" onclick="defilerAlbum(-1)" aria-label="Photos précédentes">‹</button>   
 <div class="galerie">
-    <img src="photos/photo1.jpg" alt="Notre souvenir 1" onclick="agrandirPhoto(this)">
-    <img src="photos/photo2.jpg" alt="Notre souvenir 2" onclick="agrandirPhoto(this)">
-    <img src="photos/photo3.jpg" alt="Notre souvenir 3" onclick="agrandirPhoto(this)">
-    <img src="photos/photo4.jpg" alt="Notre souvenir 4" onclick="agrandirPhoto(this)">
-    <img src="photos/photo5.jpg" alt="Notre souvenir 5" onclick="agrandirPhoto(this)">
-    <img src="photos/photo7.jpg" alt="Notre souvenir 7" onclick="agrandirPhoto(this)">
-    <img src="photos/photo8.jpg" alt="Notre souvenir 8" onclick="agrandirPhoto(this)">
+    <img src="photos/photo1.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 1" onclick="agrandirPhoto(this)">
+    <img src="photos/photo2.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 2" onclick="agrandirPhoto(this)">
+    <img src="photos/photo3.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 3" onclick="agrandirPhoto(this)">
+    <img src="photos/photo4.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 4" onclick="agrandirPhoto(this)">
+    <img src="photos/photo5.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 5" onclick="agrandirPhoto(this)">
+    <img src="photos/photo7.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 7" onclick="agrandirPhoto(this)">
+    <img src="photos/photo8.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 8" onclick="agrandirPhoto(this)">
 </div>
     <button class="fleche-album droite" onclick="defilerAlbum(1)" aria-label="Photos suivantes">›</button>
 </div>
