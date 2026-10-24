@@ -2057,6 +2057,148 @@
 }
 
 
+
+/* Tunnel fluide : conserve les cercles de perspective, sans ombres coûteuses. */
+.tunnel-futur .cadre-tunnel {
+    display: block !important;
+    box-shadow: none !important;
+    border: 2px solid rgba(220, 183, 255, 0.75);
+    will-change: transform, opacity;
+}
+.tunnel-futur.actif .cadre-tunnel { animation-duration: 1.5s; }
+.tunnel-futur.acceleration .cadre-tunnel { animation-duration: 0.9s; }
+.tunnel-futur .fil-lumiere { box-shadow: none; }
+.tunnel-futur::before {
+    box-shadow: 0 0 12px 5px #fff, 0 0 32px 12px #b98bff;
+    will-change: transform, opacity;
+}
+.tunnel-futur.acceleration::before { box-shadow: 0 0 20px 9px #fff, 0 0 50px 20px #c5a0ff; }
+.tunnel-futur.point-final::before {
+    animation: pointFinalFluide 0.65s ease-out forwards !important;
+    box-shadow: 0 0 25px 12px #fff, 0 0 60px 24px #d9baff;
+}
+@keyframes pointFinalFluide {
+    0% { transform: translate(-50%, -50%) scale(5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(85); opacity: 0; }
+}
+.flash-futur.actif { animation-duration: 0.5s; }
+.flash-entree-futur.actif { animation-duration: 0.55s; }
+.boite-lumineuse.zoom-final { animation-duration: 0.75s; }
+#messageFutur { transition-duration: 0.65s; }
+
+
+/* Voyage vers le point : perspective concentrique et explosion plein écran. */
+.tunnel-futur { perspective: none; background: radial-gradient(circle at center, #302045 0%, #11091d 42%, #020105 85%); }
+.tunnel-futur .fil-lumiere { display: none !important; }
+.tunnel-futur .cadre-tunnel {
+  width: min(82vw, 82vh); height: min(82vw, 82vh);
+  border: 3px solid rgba(221, 175, 255, .94) !important;
+  box-shadow: 0 0 12px rgba(185, 106, 255, .75), inset 0 0 9px rgba(232, 191, 255, .4) !important;
+  will-change: transform, opacity;
+}
+.tunnel-futur.actif .cadre-tunnel { animation: voyageAnneau 1.35s linear infinite !important; }
+.tunnel-futur.acceleration .cadre-tunnel { animation-duration: .8s !important; }
+.cadre-tunnel:nth-child(1) { animation-delay: -0.0s !important; }
+.cadre-tunnel:nth-child(2) { animation-delay: -.225s !important; }
+.cadre-tunnel:nth-child(3) { animation-delay: -.45s !important; }
+.cadre-tunnel:nth-child(4) { animation-delay: -.675s !important; }
+.cadre-tunnel:nth-child(5) { animation-delay: -.9s !important; }
+.cadre-tunnel:nth-child(6) { animation-delay: -1.125s !important; }
+@keyframes voyageAnneau {
+  0% { transform: translate(-50%,-50%) scale(.018); opacity: 0; }
+  10% { opacity: .92; }
+  72% { opacity: .9; }
+  100% { transform: translate(-50%,-50%) scale(3.7); opacity: 0; }
+}
+.tunnel-futur::before {
+  width: 16px !important; height: 16px !important;
+  background: #fff !important;
+  box-shadow: 0 0 12px 4px white, 0 0 34px 12px #d6a8ff !important;
+  transform: translate(-50%,-50%) scale(1);
+  will-change: transform;
+  transition: none !important;
+  z-index: 12;
+}
+.tunnel-futur.actif::before {
+  animation: approchePoint 2.35s cubic-bezier(.45,.02,.85,.55) both;
+}
+@keyframes approchePoint {
+  0% { transform: translate(-50%,-50%) scale(.55); }
+  25% { transform: translate(-50%,-50%) scale(1.7); }
+  55% { transform: translate(-50%,-50%) scale(5); }
+  80% { transform: translate(-50%,-50%) scale(15); }
+  100% { transform: translate(-50%,-50%) scale(33); }
+}
+.tunnel-futur.point-final::before {
+  animation: explosionPoint .75s cubic-bezier(.15,.65,.3,1) forwards !important;
+  box-shadow: 0 0 20px 8px white, 0 0 70px 30px #e9caff !important;
+}
+@keyframes explosionPoint {
+  0% { transform: translate(-50%,-50%) scale(33); }
+  50% { transform: translate(-50%,-50%) scale(75); }
+  100% { transform: translate(-50%,-50%) scale(220); }
+}
+.flash-futur.actif { animation: flashExplosion .85s ease-out forwards !important; }
+@keyframes flashExplosion {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+/* Filets discrets et vitesse croissante sans paliers : seulement transform/opacity. */
+.tunnel-futur .fil-lumiere {
+  display: block !important;
+  position: absolute;
+  left: 50%; top: 50%;
+  width: var(--longueur); height: var(--epaisseur);
+  transform-origin: left center;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--couleur) 45%, #fff);
+  box-shadow: none !important;
+  opacity: 0;
+  animation: filetsVoyage 1.9s linear infinite !important;
+  animation-delay: var(--delai) !important;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+@keyframes filetsVoyage {
+  0% { transform: rotate(var(--angle)) translateX(22px) scaleX(.08); opacity: 0; }
+  18% { opacity: .68; }
+  75% { opacity: .85; }
+  100% { transform: rotate(var(--angle)) translateX(var(--distance)) scaleX(1.2); opacity: 0; }
+}
+/* Une durée de base commune, accélérée continûment par playbackRate. */
+.tunnel-futur.actif .cadre-tunnel,
+.tunnel-futur.acceleration .cadre-tunnel { animation-duration: 1.9s !important; }
+
+
+/* VERSION FINALE : anneaux ronds bien visibles et vitesse très élevée. */
+.tunnel-futur .cadre-tunnel {
+  display: block !important;
+  border-radius: 50% !important;
+  border: 4px solid rgba(235, 192, 255, .98) !important;
+  box-shadow: 0 0 15px 3px rgba(190, 96, 255, .88), inset 0 0 11px rgba(230, 185, 255, .75) !important;
+  z-index: 4;
+  width: min(78vw, 78vh) !important;
+  height: min(78vw, 78vh) !important;
+  pointer-events: none;
+}
+.tunnel-futur.actif .cadre-tunnel {
+  animation: voyageAnneauRapide 1.05s linear infinite !important;
+}
+@keyframes voyageAnneauRapide {
+  0% { transform: translate(-50%,-50%) scale(.035); opacity: 0; }
+  9% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { transform: translate(-50%,-50%) scale(4.5); opacity: 0; }
+}
+.tunnel-futur.actif .fil-lumiere {
+  animation-duration: 1.15s !important;
+}
+.tunnel-futur .fil-lumiere { z-index: 5; }
+.tunnel-futur::before { z-index: 12; }
     </style>
 </head>
 
@@ -3226,6 +3368,7 @@ function creerEtoilesFutur() {
 
 
 
+let animationTunnelVitesse = 0;
 function lancerTunnelFutur() {
     const boite = document.querySelector(".boite-lumineuse");
     const invitation = document.querySelector(".invitation-futur");
@@ -3233,78 +3376,52 @@ function lancerTunnelFutur() {
     const flash = document.getElementById("flashFutur");
     const flashEntree = document.getElementById("flashEntreeFutur");
     const message = document.getElementById("messageFutur");
-
     boite.disabled = true;
+    cancelAnimationFrame(animationTunnelVitesse);
+    creerFilsLumiere();
     boite.classList.add("zoom-final");
     invitation.hidden = true;
     message.hidden = true;
     message.classList.remove("visible");
-
-    // Le carré blanc grossit et déclenche le premier flash.
+    tunnel.classList.remove("actif", "acceleration", "point-final");
+    flash.classList.remove("actif");
+    // Petit flash d'entrée, puis caméra qui se précipite VERS le point.
+    window.setTimeout(() => flashEntree.classList.add("actif"), 320);
     window.setTimeout(() => {
-        flashEntree.classList.remove("actif");
-        void flashEntree.offsetWidth;
-        flashEntree.classList.add("actif");
-    }, 650);
-
-    // Le tunnel apparaît sous le flash.
-    window.setTimeout(() => {
-        creerFilsLumiere();
         tunnel.classList.add("actif");
-    }, 950);
-
-    // Accélération progressive, sans changement brutal.
+        // Accélération exponentielle continue, sans changement brusque de vitesse.
+        const debut = performance.now();
+        const duree = 2350;
+        const effets = [...tunnel.querySelectorAll(".cadre-tunnel, .fil-lumiere")];
+        const animations = effets.flatMap(el => el.getAnimations());
+        function accelerer(maintenant) {
+            if (!tunnel.classList.contains("actif")) return;
+            const t = Math.min(1, (maintenant - debut) / duree);
+            const vitesse = Math.exp(Math.log(9.0) * t * t);
+            animations.forEach(animation => { animation.playbackRate = vitesse; });
+            if (t < 1) animationTunnelVitesse = requestAnimationFrame(accelerer);
+        }
+        animationTunnelVitesse = requestAnimationFrame(accelerer);
+    }, 550);
+    // Pas de palier de vitesse : l'accélération reste progressive.
+    // Le point a grossi progressivement pendant tout le trajet.
     window.setTimeout(() => {
-        tunnel.classList.add("acceleration");
-    }, 1300);
-
-      
-let taillePoint = 1;
-let vitessePoint = 0.025;
-
-const intervallePoint = window.setInterval(() => {
-    taillePoint += vitessePoint;
-    vitessePoint *= 1.012;
-
-    tunnel.style.setProperty("--point-taille", taillePoint);
-
-    if (taillePoint >= 5) {
-        window.clearInterval(intervallePoint);
-    }
-}, 50);
-
-
-    // Le point central grossit pour nous aspirer hors du tunnel.
+        tunnel.classList.add("point-final");
+    }, 2900);
+    // L'explosion devient un écran entièrement blanc.
+    window.setTimeout(() => flash.classList.add("actif"), 3350);
     window.setTimeout(() => {
-    tunnel.classList.add("point-final");
-    }, 3900);
-
-    // Flash blanc à la sortie.
-    window.setTimeout(() => {
-        flash.classList.remove("actif");
-        void flash.offsetWidth;
-        flash.classList.add("actif");
-    }, 4750);
-
-    
-window.setTimeout(() => {
-    const page = document.getElementById("pageFutur");
-
-    page.classList.add("sortie-futur");
-    tunnel.classList.remove("actif", "acceleration");
-
-    // Le cercle finit de recouvrir l'écran avant de disparaître.
-    window.setTimeout(() => {
-        tunnel.classList.remove("point-final");
-        message.hidden = false;
-
-        requestAnimationFrame(() => {
-            message.classList.add("visible");
-        });
-
-        page.classList.remove("sortie-futur");
-    }, 500);
-}, 5100);
+        const page = document.getElementById("pageFutur");
+        page.classList.add("sortie-futur");
+        tunnel.classList.remove("actif", "acceleration");
+        cancelAnimationFrame(animationTunnelVitesse);
+        window.setTimeout(() => {
+            tunnel.classList.remove("point-final");
+            message.hidden = false;
+            requestAnimationFrame(() => message.classList.add("visible"));
+            page.classList.remove("sortie-futur");
+        }, 220);
+    }, 3780);
 }
 
 function creerFilsLumiere() {
@@ -3321,15 +3438,15 @@ function creerFilsLumiere() {
         "#ffbce7"
     ];
 
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < 24; i++) {
         const fil = document.createElement("span");
         fil.className = "fil-lumiere";
 
         const angle = Math.random() * 360;
-        const longueur = 80 + Math.random() * 220;
+        const longueur = 45 + Math.random() * 105;
         const distance = Math.max(window.innerWidth, window.innerHeight) * 1.25;
         const vitesse = 0.7 + Math.random() * 1.4;
-        const epaisseur = 1 + Math.random() * 2.5;
+        const epaisseur = 1 + Math.random() * 1.1;
         const couleur = couleurs[Math.floor(Math.random() * couleurs.length)];
 
         fil.style.setProperty("--angle", angle + "deg");
@@ -3338,7 +3455,7 @@ function creerFilsLumiere() {
         fil.style.setProperty("--vitesse", vitesse + "s");
         fil.style.setProperty("--epaisseur", epaisseur + "px");
         fil.style.setProperty("--couleur", couleur);
-        fil.style.setProperty("--delai", (-Math.random() * vitesse) + "s");
+        fil.style.setProperty("--delai", (-Math.random() * 1.9) + "s");
 
         tunnel.appendChild(fil);
     }
@@ -3346,6 +3463,7 @@ function creerFilsLumiere() {
 
 
 function recommencerFutur() {
+    cancelAnimationFrame(animationTunnelVitesse);
     document.getElementById("tunnelFutur").classList.remove(
     "actif", "acceleration", "point-final"
 );
