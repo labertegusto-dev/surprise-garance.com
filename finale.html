@@ -2199,7 +2199,24 @@
 }
 .tunnel-futur .fil-lumiere { z-index: 5; }
 .tunnel-futur::before { z-index: 12; }
-    </style>
+    
+/* Compatibilite Chrome / Opera GX : le halo reste circulaire pendant le zoom.
+   Evite le rendu en carre des grandes ombres portees mises a l'echelle par Chrome. */
+.tunnel-futur::before,
+.tunnel-futur.point-final::before {
+  box-shadow: none !important;
+  background: radial-gradient(circle at center,
+    #ffffff 0%, #ffffff 27%,
+    #fff5ff 43%, rgba(226,191,255,.96) 62%,
+    rgba(177,111,255,.65) 78%, rgba(177,111,255,0) 100%) !important;
+  border-radius: 50% !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+</style>
 </head>
 
 <body>
