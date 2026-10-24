@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -1894,6 +1893,9 @@
 }
 
 #messageFutur.visible {
+    position: relative;
+    z-index: 30;
+    pointer-events: auto;
     opacity: 1;
     visibility: visible;
     filter: blur(0);
@@ -1946,6 +1948,9 @@
 }
 
 #messageFutur.visible {
+    position: relative;
+    z-index: 30;
+    pointer-events: auto;
     opacity: 1;
     visibility: visible;
     filter: blur(0);
@@ -2056,8 +2061,7 @@
 </head>
 
 <body>
-
-    <main class="page">
+<main class="page">
 
         <div class="petit-coeur">♡</div>
 
@@ -2132,27 +2136,27 @@
         <div class="grille-souvenirs" id="grilleSouvenirs">
             <button class="case-souvenir" onclick="ouvrirSouvenir(0)">
                 <span class="cadenas">🔒</span>
-                <span>Secret n°1</span>
+                <span>Souvenir n°1</span>
             </button>
             <button class="case-souvenir" onclick="ouvrirSouvenir(1)">
                 <span class="cadenas">🔒</span>
-                <span>Secret n°2</span>
+                <span>Souvenir n°2</span>
             </button>
             <button class="case-souvenir" onclick="ouvrirSouvenir(2)">
                 <span class="cadenas">🔒</span>
-                <span>Secret n°3</span>
+                <span>Souvenir n°3</span>
             </button>
             <button class="case-souvenir" onclick="ouvrirSouvenir(3)">
                 <span class="cadenas">🔒</span>
-                <span>Secret n°4</span>
+                <span>Souvenir n°4</span>
             </button>
             <button class="case-souvenir" onclick="ouvrirSouvenir(4)">
                 <span class="cadenas">🔒</span>
-                <span>Secret n°5</span>
+                <span>Souvenir n°5</span>
             </button>
             <button class="case-souvenir" onclick="ouvrirSouvenir(5)">
                 <span class="cadenas">🔒</span>
-                <span>Secret n°6</span>
+                <span>Souvenir n°6</span>
             </button>
         </div>
 
@@ -2169,7 +2173,7 @@
                     aria-label="Fermer ce souvenir">×</button>
 
             <div class="petit-coeur">♡</div>
-            <p id="numeroSecret" class="numero-secret">UN SECRET POUR NOUS</p>
+            <p id="numeroSecret" class="numero-secret">UN SOUVENIR POUR NOUS</p>
             <h3 id="titreSecret">Un instant à nous</h3>
             <p id="texteSecret"></p>
 
@@ -2346,8 +2350,6 @@
     <div id="flashFutur" class="flash-futur"></div>
     <div id="flashEntreeFutur" class="flash-entree-futur"></div>
     
-<div id="flashEntreeFutur" class="flash-entree-futur"></div>
-
 <div id="messageFutur" class="message-futur" hidden>
 
     <h2>Tu croyais que c'était tout ?</h2>
@@ -2364,9 +2366,11 @@
         <strong>Et ça je veux les découvrir avec toi. ♡</strong>
     </p>
 
-    <button class="recommencer-futur" onclick="recommencerFutur()">
-        Revenir à notre univers
-    </button>
+    <button class="recommencer-futur"
+        onclick="recommencerFutur()"
+        style="position:relative; z-index:999999;">
+    Revenir à notre univers
+</button>
 </div>
 
 </section>
@@ -2950,7 +2954,7 @@ function afficherGrilleSouvenirs() {
         const ouvert = caseEl.classList.contains("ouvert");
         caseEl.querySelector(".cadenas").textContent = ouvert ? "🔓" : "🔒";
         caseEl.querySelector("span:last-child").textContent =
-            ouvert ? "Secret découvert" : `Secret n°${index + 1}`;
+            ouvert ? "Souvenir découvert" : `Souvenir n°${index + 1}`;
     });
 }
 
@@ -2966,7 +2970,7 @@ function afficherCarteSouvenir() {
     const souvenir = souvenirsSecrets[souvenirActuel];
 
     document.getElementById("numeroSecret").textContent =
-        `UN SECRET POUR NOUS · ${souvenirActuel + 1}/6`;
+        `UN SOUVENIR POUR NOUS · ${souvenirActuel + 1}/6`;
     document.getElementById("titreSecret").textContent = souvenir.titre;
     document.getElementById("texteSecret").textContent = souvenir.texte;
 
@@ -2979,7 +2983,7 @@ function afficherCarteSouvenir() {
     const caseEl = document.querySelectorAll(".case-souvenir")[souvenirActuel];
     caseEl.classList.add("ouvert");
     caseEl.querySelector(".cadenas").textContent = "🔓";
-    caseEl.querySelector("span:last-child").textContent = "Secret découvert";
+    caseEl.querySelector("span:last-child").textContent = "Souvenir découvert";
 }
 
 function souvenirSuivant() {
