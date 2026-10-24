@@ -46,9 +46,26 @@ window.addEventListener("load", () => {
         musique.volume = 0.07;
         musiqueFinale.volume = 0;
 
+        // Tenter la lecture dès l'ouverture, puis au premier geste autorisé.
+        // Les pages de l'iframe sont sur le même site : on peut écouter leurs clics.
+        function brancherPremierClic() {
+            try {
+                const doc = page.contentDocument;
+                if (!doc) return;
+                doc.addEventListener("pointerdown", lancerMusique, { capture: true });
+                doc.addEventListener("keydown", lancerMusique, { capture: true });
+            } catch (erreur) {
+                console.log("Impossible d'écouter les clics dans la page intégrée.");
+            }
+        }
+        page.addEventListener("load", brancherPremierClic);
+        document.addEventListener("pointerdown", lancerMusique, { capture: true });
+        document.addEventListener("keydown", lancerMusique, { capture: true });
+
         let transitionFinaleEnCours = false;
 
         function changerPage(nom) {
+            // Une URL nouvelle évite de conserver une ancienne page dans le cadre.
             page.src = nom + ".html?v=" + Date.now();
         }
 
@@ -104,9 +121,11 @@ function fonduVersFinale() {
                 changerPage("accueil-ancien");
             }
             if (event.data === "page-accueil") {
-               changerPage("accueil");
-}
+                lancerMusique();
+                changerPage("accueil");
+            }
             if (event.data === "page-surprise") {
+                lancerMusique();
                 changerPage("surprise");
             }
 
