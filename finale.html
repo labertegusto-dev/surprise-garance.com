@@ -2293,13 +2293,13 @@
  <div class="album-defilant">
     <button class="fleche-album gauche" onclick="defilerAlbum(-1)" aria-label="Photos précédentes">‹</button>   
 <div class="galerie">
-    <img src="photos/photo1.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 1" onclick="agrandirPhoto(this)">
-    <img src="photos/photo2.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 2" onclick="agrandirPhoto(this)">
-    <img src="photos/photo3.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 3" onclick="agrandirPhoto(this)">
-    <img src="photos/photo4.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 4" onclick="agrandirPhoto(this)">
-    <img src="photos/photo5.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 5" onclick="agrandirPhoto(this)">
-    <img src="photos/photo7.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 7" onclick="agrandirPhoto(this)">
-    <img src="photos/photo8.jpg" onerror="this.onerror=null;this.src=this.src.replace(/\.jpg$/i, '.JPG')" alt="Notre souvenir 8" onclick="agrandirPhoto(this)">
+    <img src="photos/photo1.JPG" onerror="essayerAutreExtension(this)" alt="Notre souvenir 1" onclick="agrandirPhoto(this)">
+    <img src="photos/photo2.JPG" onerror="essayerAutreExtension(this)" alt="Notre souvenir 2" onclick="agrandirPhoto(this)">
+    <img src="photos/photo3.JPG" onerror="essayerAutreExtension(this)" alt="Notre souvenir 3" onclick="agrandirPhoto(this)">
+    <img src="photos/photo4.JPG" onerror="essayerAutreExtension(this)" alt="Notre souvenir 4" onclick="agrandirPhoto(this)">
+    <img src="photos/photo5.JPG" onerror="essayerAutreExtension(this)" alt="Notre souvenir 5" onclick="agrandirPhoto(this)">
+    <img src="photos/photo7.JPG" onerror="essayerAutreExtension(this)" alt="Notre souvenir 7" onclick="agrandirPhoto(this)">
+    <img src="photos/photo8.JPG" onerror="essayerAutreExtension(this)" alt="Notre souvenir 8" onclick="agrandirPhoto(this)">
 </div>
     <button class="fleche-album droite" onclick="defilerAlbum(1)" aria-label="Photos suivantes">›</button>
 </div>
@@ -3399,5 +3399,19 @@ document.addEventListener("keydown", function(event) {
         <div class="signature-parchemin">Avec tout mon amour ♡</div>
     </div>
 </div>
+<script>
+// Vérifie les extensions possibles sans modifier les autres fonctionnalités.
+function essayerAutreExtension(image) {
+    const base = image.getAttribute('src').replace(/\.(JPG|jpg|jpeg|JPEG|png|PNG)$/i, '');
+    const extensions = ['.JPG', '.jpg', '.jpeg', '.JPEG', '.png', '.PNG'];
+    const essai = Number(image.dataset.essaiPhoto || '0') + 1;
+    if (essai < extensions.length) {
+        image.dataset.essaiPhoto = String(essai);
+        image.src = base + extensions[essai];
+    } else {
+        image.onerror = null;
+    }
+}
+</script>
 </body>
 </html>
