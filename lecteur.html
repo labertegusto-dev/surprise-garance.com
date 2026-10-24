@@ -31,7 +31,7 @@
     <audio id="musiqueFinale" src="audio/musique%20finale.mp3"
            loop preload="auto"></audio>
 
-    <iframe id="page" src="accueil.html" title="Notre histoire"></iframe>
+    <iframe id="page" src="accueil-ancien.html?v=20261024" title="Notre histoire"></iframe>
 
     <script>
         const musique = document.getElementById("musique");
@@ -49,7 +49,7 @@ window.addEventListener("load", () => {
         let transitionFinaleEnCours = false;
 
         function changerPage(nom) {
-            page.src = nom + ".html";
+            page.src = nom + ".html?v=" + Date.now();
         }
 
         function lancerMusique() {
@@ -101,9 +101,11 @@ function fonduVersFinale() {
             }
 
             if (event.data === "page-index") {
-                changerPage("index");
+                changerPage("accueil-ancien");
             }
-
+            if (event.data === "page-accueil") {
+               changerPage("accueil");
+}
             if (event.data === "page-surprise") {
                 changerPage("surprise");
             }
